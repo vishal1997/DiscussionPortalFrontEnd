@@ -15,10 +15,14 @@ export class ProfileComponent implements OnInit {
   user = [];
   ngOnInit() {
     this._appService.getUserDetails()
-    .subscribe(resAppData => this.user = resAppData);
+    .subscribe(resAppData => this.updateUserData(resAppData));
   }
-
-    onSelect(id) {
+  updateUserData(data) {
+    this.user = data;
+    this.dataLoaded = true;
+  }
+  dataLoaded = false;
+  onSelect(id) {
         this.router.navigate(['/question', id]);
   }
 

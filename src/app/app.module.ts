@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpModule, XSRFStrategy, CookieXSRFStrategy} from '@angular/http';
 import { AppComponent, AppInternalComponents } from './app.component';
 import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,7 +20,11 @@ import { ProfileComponent } from './body/main-content/profile/profile.component'
   imports: [
     BrowserModule, FormsModule, HttpModule, MaterialModule, AppRouterModule, BrowserAnimationsModule, FlexLayoutModule
   ],
-  providers: [],
+  providers: [ {provide: XSRFStrategy, useFactory: xsrfFactory}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function xsrfFactory() {
+    return new CookieXSRFStrategy('XSRF-TOKEN', 'XSRF-TOKEN');
+}

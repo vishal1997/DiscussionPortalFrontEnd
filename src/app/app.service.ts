@@ -29,4 +29,9 @@ export class AppService {
         return this._http.get("/api/v1/myanswers")
                 .map((response:Response) => response.json());
     }
+
+    getOtherUserDetails(userId) {
+        return this._http.get("/api/v1/" + userId + "/answers")
+                .map((response:Response) => response.json());
+    }
 }
