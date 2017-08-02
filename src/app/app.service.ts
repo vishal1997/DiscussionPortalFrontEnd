@@ -20,8 +20,13 @@ export class AppService {
         .map((Response:Response) => Response.json());
     }
 
-    getAnswerDatails(answerId) {
+    getAnswerDetails(answerId) {
         return this._http.get("/api/v1/answer/"+ answerId)
+                .map((response:Response) => response.json());
+    }
+
+    getUserDetails() {
+        return this._http.get("/api/v1/myanswers")
                 .map((response:Response) => response.json());
     }
 }

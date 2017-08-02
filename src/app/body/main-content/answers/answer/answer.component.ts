@@ -17,7 +17,7 @@ export class AnswerComponent implements OnInit {
 
   ngOnInit() {
     let answerId = this._route.snapshot.params['id'];
-    this._appService.getAnswerDatails(answerId)
+    this._appService.getAnswerDetails(answerId)
     .subscribe(resAppData => this.answer = resAppData);
   }
 

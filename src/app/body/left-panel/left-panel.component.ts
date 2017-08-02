@@ -13,8 +13,11 @@ export class LeftPanelComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSelect() {
+  onSelectHome() {
     this.router.navigate(['/home']);
   }
 
+  onSelectProfile() {
+    this.router.navigate(['/profile']);
+  }
 }
