@@ -1,31 +1,42 @@
 <p>
   <app-add-question></app-add-question>
 </p>
-  <!-- Dummy -->
-  <br />
-  <div *ngFor = "let answer of data">
+<!-- Dummy -->
+<md-card *ngIf="!dataLoaded" >
+    <md-card-header>
+    <div md-card-avatar>
+        <md-icon>person</md-icon>
+    </div>
+    </md-card-header>
+    <md-card-footer>
+        <md-progress-bar mode="indeterminate" >
+        </md-progress-bar>
+    </md-card-footer>
+</md-card>
+<br />
+<div *ngFor = "let answer of data">
   <md-card class="example-card">
-  <md-card-header>
-    <div md-card-avatar><md-icon>person</md-icon></div>
-    <md-card-title>{{answer.answeredBy}}</md-card-title>
-    <md-card-subtitle>{{answer.date | date}}</md-card-subtitle>
-    <md-chip-list>
-  <md-chip>Education</md-chip>
-</md-chip-list>
-  </md-card-header>
-  <md-card-content>
-    <h2>
-      {{answer.question}}
-    </h2>
-    <p>
-        {{answer.answer}}
-    </p>
-  </md-card-content>
-  <md-card-actions align="center">
-  <button md-button color="primary">Agree</button>
-    <button md-button color="warn">Disagree</button>
-  </md-card-actions>
+    <md-card-header>
+      <div md-card-avatar><md-icon>person</md-icon></div>
+      <md-card-title>{{answer.answeredBy}}</md-card-title>
+      <md-card-subtitle>{{answer.date | date}}</md-card-subtitle>
+      <md-chip-list>
+        <md-chip>Education</md-chip>
+      </md-chip-list>
+    </md-card-header>
+    <md-card-content>
+        <h3 (click)=onSelect(answer.questionId) style="cursor: pointer">
+          {{answer.question}}
+        </h3>
+        <p style="white-space: pre-wrap;">
+          {{answer.answer}}
+        </p>
+    </md-card-content>
+    <md-card-actions align="center">
+      <button md-button color="primary">Agree</button>
+      <button md-button color="warn">Disagree</button>
+    </md-card-actions>
   </md-card>
   <br />
-  </div>
+</div>
 
