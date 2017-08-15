@@ -33,8 +33,10 @@
         </p>
     </md-card-content>
     <md-card-actions align="center">
-      <button md-button color="primary">Agree</button>
-      <button md-button color="warn">Disagree</button>
+      <div > 
+        <button md-button color="primary" (click)=agree(answer.answerId)>{{answer.noOfAgree}} Agree</button>
+        <button md-button color="warn" (click)=disAgree(answer.answerId)>{{answer.noOfDisAgree}} Disagree</button>
+      </div>
     </md-card-actions>
   </md-card>
   <br />

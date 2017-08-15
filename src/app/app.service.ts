@@ -39,4 +39,9 @@ export class AppService {
         return this._http.get("/api/v1/home")
                 .map((response:Response) => response.json());
     }
+
+    agreeDisagree(answerId, option) {
+        return this._http.put("/api/v1/"+ answerId, option)
+        .map((response:Response) => response.text() ? response.json() : response);
+    }
 }
