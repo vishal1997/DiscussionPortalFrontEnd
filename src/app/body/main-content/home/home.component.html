@@ -33,9 +33,9 @@
         </p>
     </md-card-content>
     <md-card-actions align="center">
-      <div > 
-        <button md-button color="primary" (click)=agree(answer.answerId)>{{answer.noOfAgree}} Agree</button>
-        <button md-button color="warn" (click)=disAgree(answer.answerId)>{{answer.noOfDisAgree}} Disagree</button>
+      <div> 
+        <button md-button color="{{ (getAgreeStatus(answer.agree)) ? 'primary' : '#e7e7e7' }}" (click)=agree(answer.answerId)> {{answer.noOfAgree}} Agree</button>
+        <button md-button color="{{ (getDisagreeStatus(answer.disagree)) ?  'warn': '#e7e7e7' }}"  (click)=disagree(answer.answerId)>{{answer.noOfDisagree}} Disagree</button>
       </div>
     </md-card-actions>
   </md-card>

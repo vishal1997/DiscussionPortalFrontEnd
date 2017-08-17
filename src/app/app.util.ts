@@ -18,8 +18,8 @@ export class UtilComponent {
         .subscribe(resAppData => this.res = resAppData);
       }
     
-    disAgree(answerId) {
-    this._appService.agreeDisagree(answerId, "disagree")
-    .subscribe(resAppData => this.res = resAppData);
+    disagree(answerId) {
+        this._appService.agreeDisagree(answerId, "disagree")
+        .subscribe(resAppData => this.res = resAppData);
     }
 }

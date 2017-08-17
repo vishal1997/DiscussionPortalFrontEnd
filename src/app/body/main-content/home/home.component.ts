@@ -16,23 +16,66 @@ export class HomeComponent implements OnInit {
 
   data = [];
   res =[];
+  userId={};
+  userAgree:boolean;
+  userDisagree:boolean;
   ngOnInit() {
     this._appService.getFeeds()
     .subscribe(resAppData => this.updateUserData(resAppData));
+
+    this.getUserId();
   }
+
+  getDisagreeStatus(disagreeList) {
+
+    if(disagreeList) {
+      for(let ele of disagreeList) {
+        if(ele==this.userId) {
+          this.userDisagree=true;
+          return true;
+        }
+      }
+    }
+    this.userAgree=false;
+    return false;
+  }
+
+  getAgreeStatus(agreeList) {
+
+    if(agreeList) {
+      for(let ele of agreeList) {
+        if(ele == this.userId) {
+          this.userAgree= true;
+          return true;
+        }
+      }
+    }
+    this.userDisagree= false;
+    return false;
+  }
+
   updateUserData(data) {
     this.data = data;
     this.dataLoaded = true;
   }
+
   dataLoaded = false;
+  
   onSelect(id) {
         this.router.navigate(['/question', id]);
   }
+
   agree(answerId) {
   this.util.agree(answerId); 
   }
 
-  disAgree(answerId) {
-    this.util.disAgree(answerId);
+  disagree(answerId) {
+    this.util.disagree(answerId);
+  }
+
+  getUserId() {
+    this.userId=  this._appService.getUserId()
+    .subscribe((resAppData) => this.userId = resAppData);
+    
   }
 }

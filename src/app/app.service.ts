@@ -42,6 +42,11 @@ export class AppService {
 
     agreeDisagree(answerId, option) {
         return this._http.put("/api/v1/"+ answerId, option)
-        .map((response:Response) => response.text() ? response.json() : response);
+                .map((response:Response) => response.text() ? response.json() : response);
+    }
+
+    getUserId() {
+        return this._http.get("/api/v1/user")
+                .map((response:Response) => response.json());
     }
 }
