@@ -5,7 +5,8 @@ import { HomeComponent } from '../body/main-content/home/home.component'
 import { AnswerComponent} from '../body/main-content/answers/answer/answer.component';
 import { ProfileComponent } from '../body/main-content/profile/profile.component';
 import { OtherProfileComponent } from '../body/main-content/other-profile/other-profile.component';
-
+import { CommentsComponent } from '../body/main-content/comments/add-comments/add-comments.component';
+import { AllCommentsComponent } from '../body/main-content/comments/all-comments/all-comments.component';
 const routes:Routes = [
     {path:"question/:id", component: AllAnswersComponent},
     {path:"home", component: HomeComponent},
@@ -30,5 +31,5 @@ export const RoutingInternalComponents = [
     HomeComponent, 
     AnswerComponent,
     ProfileComponent, 
-    OtherProfileComponent
+    OtherProfileComponent,
 ] 

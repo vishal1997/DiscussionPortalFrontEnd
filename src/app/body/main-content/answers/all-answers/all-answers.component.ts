@@ -59,6 +59,14 @@ export class AllAnswersComponent implements OnInit {
     this.getAnswers();
   }
 
+  onSelectUserId(id) {
+    this.router.navigate(["user", id]);
+  }
+
+  onSelectComment(id) {
+    this.router.navigate(['/comments', id]);
+  }
+
 }
 
 export const AllAnswersInternalComponent = [];

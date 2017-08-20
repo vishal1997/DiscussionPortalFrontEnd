@@ -10,7 +10,7 @@ export class AppService {
                 .map((response:Response) => response.json());
     }
 
-     addQuestion(questionObj) {
+    addQuestion(questionObj) {
         return this._http.post("/api/v1/question", questionObj)
                 .map((response:Response) => response.json());
     }
@@ -49,4 +49,15 @@ export class AppService {
         return this._http.get("/api/v1/user")
                 .map((response:Response) => response.json());
     }
+
+    addComment(answerId, comment) {
+        return this._http.put("/api/v1/comments/"+ answerId, comment)
+                .map((response: Response) => response.text() ? response.json(): response);
+    }
+
+    getCommentDetails(answerId) {
+        return this._http.get("/api/v1/allcomments/" + answerId) 
+                .map((response: Response) => response.text() ? response.json(): response);
+    }
+
 }

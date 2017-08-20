@@ -27,6 +27,15 @@ export class ProfileComponent implements OnInit {
         this.router.navigate(['/question', id]);
   }
 
+  onSelectComment(id) {
+    this.router.navigate(['/answer', id]);
+  }
+
+  onSelectUserId(id) {
+    this.router.navigate(["user", id]);
+  }
+
+
   agree(answerId) {
     this.util.agree(answerId); 
     }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AppService } from '../../../app.service';
 import { Router } from '@angular/router';
 import { UtilComponent } from '../../../app.util';
@@ -12,13 +12,16 @@ import { UtilComponent } from '../../../app.util';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private _appService:AppService, private router:Router, private util:UtilComponent) { }
+  constructor(private _appService:AppService, private router:Router, private util:UtilComponent,
+              private cdr: ChangeDetectorRef) { }
 
   data = [];
   res =[];
   userId={};
-  userAgree:boolean;
-  userDisagree:boolean;
+  userAgree=false;
+  userDisagree=false;
+  color:String
+
   ngOnInit() {
     this._appService.getFeeds()
     .subscribe(resAppData => this.updateUserData(resAppData));
@@ -26,6 +29,14 @@ export class HomeComponent implements OnInit {
     this.getUserId();
   }
 
+
+  change() {
+    this.cdr.detectChanges();
+  }
+
+  onSelectComment(id) {
+    this.router.navigate(['/answer', id]);
+  }
   getDisagreeStatus(disagreeList) {
 
     if(disagreeList) {
@@ -36,7 +47,7 @@ export class HomeComponent implements OnInit {
         }
       }
     }
-    this.userAgree=false;
+    this.userDisagree=false;
     return false;
   }
 
@@ -50,7 +61,7 @@ export class HomeComponent implements OnInit {
         }
       }
     }
-    this.userDisagree= false;
+    this.userAgree= false;
     return false;
   }
 
@@ -65,8 +76,13 @@ export class HomeComponent implements OnInit {
         this.router.navigate(['/question', id]);
   }
 
+  onSelectUserId(id) {
+    this.router.navigate(["user", id]);
+  }
+
+
   agree(answerId) {
-  this.util.agree(answerId); 
+    this.util.agree(answerId); 
   }
 
   disagree(answerId) {

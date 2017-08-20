@@ -1,0 +1,36 @@
+<br />
+<md-card>
+    <form #addCommentForm="ngForm" (ngSubmit)="submitNewComment();" >
+      <div fxLayout="row" >
+        <div fxFlex="90">
+        <md-input-container style="width: 100%"> 
+            <textarea #commentInput 
+                  mdInput 
+                  placeholder="Comment" 
+                  value="" 
+                  name="comment" 
+                  [(ngModel)]="comment.comment"
+                  mdTextareaAutosize
+                  required
+                  >
+            </textarea>
+    
+          </md-input-container>
+        </div>
+        <div fxFlex="10">
+          <button [disabled]="addCommentForm.form.invalid" 
+                  type="submit" 
+                  md-fab>
+                  
+                  <md-icon>check</md-icon>
+          </button>
+        </div>
+      </div>
+      
+    </form>
+    <md-card-footer>
+      <md-progress-bar mode="indeterminate" 
+                       *ngIf="addCommentProgress">
+      </md-progress-bar>
+    </md-card-footer>
+    </md-card>

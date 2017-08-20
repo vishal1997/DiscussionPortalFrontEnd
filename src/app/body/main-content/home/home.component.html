@@ -18,7 +18,9 @@
   <md-card class="example-card">
     <md-card-header>
       <div md-card-avatar><md-icon>person</md-icon></div>
-      <md-card-title>{{answer.answeredBy}}</md-card-title>
+      <md-card-title (click)=onSelectUserId(answer.answeredBy) style="cursor: pointer">
+        {{answer.answeredBy}}
+      </md-card-title>
       <md-card-subtitle>{{answer.date | date}}</md-card-subtitle>
       <md-chip-list>
         <md-chip>Education</md-chip>
@@ -31,14 +33,30 @@
         <p style="white-space: pre-wrap;">
           {{answer.answer}}
         </p>
+            
     </md-card-content>
     <md-card-actions align="center">
       <div> 
-        <button md-button color="{{ (getAgreeStatus(answer.agree)) ? 'primary' : '#e7e7e7' }}" (click)=agree(answer.answerId)> {{answer.noOfAgree}} Agree</button>
-        <button md-button color="{{ (getDisagreeStatus(answer.disagree)) ?  'warn': '#e7e7e7' }}"  (click)=disagree(answer.answerId)>{{answer.noOfDisagree}} Disagree</button>
+        <button md-button 
+          color="{{ (getAgreeStatus(answer.agree)) ? 'primary' : '#e7e7e7' }}" 
+          (click)=agree(answer.answerId)> 
+          {{answer.noOfAgree}} Agree
+        </button>
+
+        <button md-button 
+          color="{{ (getDisagreeStatus(answer.disagree)) ?  'warn': '#e7e7e7' }}"  
+          (click)=disagree(answer.answerId)>{{answer.noOfDisagree}} Disagree
+        </button>
+
+        <button md-button 
+          color="primary" 
+          (click)="onSelectComment(answer.answerId)">
+          Comments
+        </button>
       </div>
     </md-card-actions>
   </md-card>
   <br />
 </div>
+
 

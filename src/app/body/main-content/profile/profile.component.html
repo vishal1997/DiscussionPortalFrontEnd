@@ -20,7 +20,7 @@
         <div md-card-avatar>
             <md-icon>person</md-icon>
         </div>
-        <md-card-title>{{answer.answeredBy}}</md-card-title>
+        <md-card-title >{{answer.answeredBy}}</md-card-title>
         <md-card-subtitle>{{answer.date | date}}</md-card-subtitle>
             <md-chip-list>
                 <md-chip>Education</md-chip>
@@ -36,8 +36,13 @@
         </md-card-content>
         <md-card-actions align="center">
             <div > 
-              <button md-button color="primary" (click)=agree(answer.answerId)>{{answer.noOfAgree}} Agree</button>
-              <button md-button color="warn" (click)=disagree(answer.answerId)>{{answer.noOfDisagree}} Disagree</button>
+                <button md-button color="primary" (click)=agree(answer.answerId)>{{answer.noOfAgree}} Agree</button>
+                <button md-button color="warn" (click)=disagree(answer.answerId)>{{answer.noOfDisagree}} Disagree</button>
+                <button md-button 
+                    color="primary" 
+                    (click)="onSelectComment(answer.answerId)">
+                    Comments
+                </button>
             </div>
         </md-card-actions>
 </md-card>

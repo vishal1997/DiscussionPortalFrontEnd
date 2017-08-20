@@ -10,7 +10,7 @@
         <div md-card-avatar>
             <md-icon>person</md-icon>
         </div>
-        <md-card-title>{{answer.answeredBy}}</md-card-title>
+        <md-card-title (click)=onSelectUserId(answer.answeredBy) style="cursor: pointer">{{answer.answeredBy}}</md-card-title>
         <md-card-subtitle>KIIT</md-card-subtitle>
             <md-chip-list>
                 <md-chip>Education</md-chip>
@@ -26,4 +26,6 @@
             <button md-button color="warn">{{answer.noOfDisAgree}} Disagree</button>
         </md-card-actions>
     </md-card>
+        <app-add-comments></app-add-comments>
+        <app-all-comments></app-all-comments>
 </p>

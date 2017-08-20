@@ -69,7 +69,7 @@
         <div md-card-avatar>
             <md-icon>person</md-icon>
         </div>
-        <md-card-title>{{answer.answerBy}}</md-card-title>
+        <md-card-title (click)=onSelectUserId(answer.answeredBy) style="cursor: pointer">{{answer.answerBy}}</md-card-title>
         <md-card-subtitle>KIIT</md-card-subtitle>
             <md-chip-list>
                 <md-chip>Education</md-chip>
@@ -87,6 +87,11 @@
         <md-card-actions align="center">
             <button md-button color="primary">{{answer.noOfAgree}} Agree</button>
             <button md-button color="warn">{{answer.noOfDisAgree}} Disagree</button>
+            <button md-button 
+                color="primary" 
+                (click)="onSelectComment(answer.answerId)">
+                Comments
+            </button>
         </md-card-actions>
     </md-card>
     <br />

@@ -24,4 +24,9 @@ export class AnswerComponent implements OnInit {
   onSelect(id) {
         this.router.navigate(['/question', id]);
   }
+
+  onSelectUserId(id) {
+    this.router.navigate(["user", id]);
+  }
+
 }

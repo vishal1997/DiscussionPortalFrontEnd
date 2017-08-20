@@ -12,11 +12,13 @@ import { AddQuestionComponent } from './body/main-content/home/add-question/add-
 import { AnswerComponent } from './body/main-content/answers/answer/answer.component';
 import { ProfileComponent } from './body/main-content/profile/profile.component';
 import { UtilComponent } from '../app/app.util';
+import { CommentsComponent } from './body/main-content/comments/add-comments/add-comments.component';
+import { AllCommentsComponent } from './body/main-content/comments/all-comments/all-comments.component';
 
 @NgModule({
   declarations: [
     AppComponent, AppInternalComponents, RoutingInternalComponents, HomeComponent, AddQuestionComponent, 
-    AnswerComponent, ProfileComponent, ProfileComponent, UtilComponent
+    AnswerComponent, ProfileComponent, ProfileComponent, UtilComponent, CommentsComponent, AllCommentsComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpModule, MaterialModule, AppRouterModule, BrowserAnimationsModule, FlexLayoutModule

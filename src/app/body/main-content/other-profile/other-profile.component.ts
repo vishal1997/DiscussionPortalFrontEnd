@@ -28,6 +28,10 @@ export class OtherProfileComponent implements OnInit {
         this.router.navigate(['/question', id]);
   }
 
+  onSelectComment(id) {
+    this.router.navigate(['/answer', id]);
+  }
+
   agree(answerId) {
     this.util.agree(answerId); 
     }
