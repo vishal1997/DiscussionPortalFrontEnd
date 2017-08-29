@@ -1,0 +1,46 @@
+
+<br />
+<br />
+<md-card>
+  <form #registerUser="ngForm"  (ngSubmit)="submitNewUser();">
+    <div fxLayout="row" >
+      <div fxFlex="90">
+        <div>
+          <md-input-container style="width: 100%">
+            <input  mdInput 
+                    placeholder="Reg. No." 
+                    name="reg_no"
+                    [(ngModel)]="register.username"
+                    required>
+          </md-input-container>
+        </div>
+
+        <div>
+          <md-input-container style="width: 100%">
+            <input  mdInput 
+                    placeholder="Password" 
+                    name="password" 
+                    type="password"
+                    [(ngModel)]="register.password"
+                    required>
+          </md-input-container>
+        </div>
+
+        <div>
+          <md-input-container style="width: 100%">
+            <input  mdInput 
+                    placeholder="Confirm Password" 
+                    name="confirm_password" 
+                    type="password"
+                    required>
+          </md-input-container>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button md-raised-button color="primary" type="submit" name="submit">
+        Submit
+      </button>
+    </div>
+  </form>
+<md-card>

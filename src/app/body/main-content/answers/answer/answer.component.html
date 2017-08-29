@@ -22,8 +22,17 @@
             </p>
         </md-card-content>
         <md-card-actions align="center">
-            <button md-button color="primary">{{answer.noOfAgree}} Agree</button>
-            <button md-button color="warn">{{answer.noOfDisAgree}} Disagree</button>
+            <button md-button 
+            color="{{ (getAgreeStatus(answer.agree)) ? 'primary' : '#e7e7e7' }}" 
+            (click)=agree(answer.answerId)> 
+            {{answer.noOfAgree}} Agree
+          </button>
+  
+          <button md-button 
+            color="{{ (getDisagreeStatus(answer.disagree)) ?  'warn': '#e7e7e7' }}"  
+            (click)=disagree(answer.answerId)>{{answer.noOfDisagree}} Disagree
+          </button>
+          
         </md-card-actions>
     </md-card>
         <app-add-comments></app-add-comments>

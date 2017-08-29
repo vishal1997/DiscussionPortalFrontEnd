@@ -14,15 +14,21 @@ import { ProfileComponent } from './body/main-content/profile/profile.component'
 import { UtilComponent } from '../app/app.util';
 import { CommentsComponent } from './body/main-content/comments/add-comments/add-comments.component';
 import { AllCommentsComponent } from './body/main-content/comments/all-comments/all-comments.component';
+import { LoginComponent } from './body/main-content/login/login.component';
+import { RegisterComponent } from './body/main-content/register/register.component';
 
 @NgModule({
   declarations: [
-    AppComponent, AppInternalComponents, RoutingInternalComponents, HomeComponent, AddQuestionComponent, 
-    AnswerComponent, ProfileComponent, ProfileComponent, UtilComponent, CommentsComponent, AllCommentsComponent
+    AppComponent, AppInternalComponents, RoutingInternalComponents, HomeComponent, 
+    AddQuestionComponent, AnswerComponent, ProfileComponent, ProfileComponent, 
+    UtilComponent, CommentsComponent, AllCommentsComponent, LoginComponent, RegisterComponent
   ],
+  
   imports: [
-    BrowserModule, FormsModule, HttpModule, MaterialModule, AppRouterModule, BrowserAnimationsModule, FlexLayoutModule
+    BrowserModule, FormsModule, HttpModule, MaterialModule, AppRouterModule, 
+    BrowserAnimationsModule, FlexLayoutModule
   ],
+
   providers: [ {provide: XSRFStrategy, useFactory: xsrfFactory}],
   bootstrap: [AppComponent]
 })

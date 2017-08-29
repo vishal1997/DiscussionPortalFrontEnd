@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AppService } from '../../../app.service';
 import { Router } from '@angular/router';
 import { UtilComponent } from '../../../app.util';
@@ -12,26 +12,18 @@ import { UtilComponent } from '../../../app.util';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private _appService:AppService, private router:Router, private util:UtilComponent,
-              private cdr: ChangeDetectorRef) { }
-
+  constructor(private _appService:AppService, private router:Router, private util:UtilComponent) { }
   data = [];
   res =[];
   userId={};
   userAgree=false;
   userDisagree=false;
-  color:String
-
   ngOnInit() {
+
     this._appService.getFeeds()
     .subscribe(resAppData => this.updateUserData(resAppData));
 
     this.getUserId();
-  }
-
-
-  change() {
-    this.cdr.detectChanges();
   }
 
   onSelectComment(id) {
@@ -41,7 +33,7 @@ export class HomeComponent implements OnInit {
 
     if(disagreeList) {
       for(let ele of disagreeList) {
-        if(ele==this.userId) {
+        if(ele==this.userId) {  
           this.userDisagree=true;
           return true;
         }

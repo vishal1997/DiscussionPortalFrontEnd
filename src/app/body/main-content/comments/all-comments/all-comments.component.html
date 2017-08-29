@@ -5,15 +5,15 @@
         <div md-card-avatar>
             <md-icon>person</md-icon>
         </div>
+        <div>
         <md-card-title (click)=onSelectUserId(answer.answeredBy) style="cursor: pointer">
           {{comment.userId}}
         </md-card-title>
         <md-card-subtitle>{{comment.date | date}}</md-card-subtitle>
+        </div>
         </md-card-header>
         <md-card-content>
-            <p style="white-space: pre-wrap;">
             {{comment.comment}}
-            </p>
         </md-card-content>
         <md-card-actions align="center">
             <button md-button color="primary">{{comment.noOfAgree}} Agree</button>

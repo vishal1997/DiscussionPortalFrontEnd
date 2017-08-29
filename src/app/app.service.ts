@@ -60,4 +60,13 @@ export class AppService {
                 .map((response: Response) => response.text() ? response.json(): response);
     }
 
+    loginPage(user, password) {
+        return this._http.get("/api/v1/iter"+user, password)
+                .map((response:Response) => response.text() ? response.json(): response);
+    }
+
+    addNewUser(register) {
+        return this._http.post("/api/v1/register", register) 
+                .map((response:Response) => response.text() ? response.json() : response);
+    }
 }

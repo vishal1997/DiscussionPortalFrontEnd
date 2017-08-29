@@ -1,0 +1,52 @@
+<br />
+<br />
+
+<div class="flex-container" 
+  fxLayout="row" 
+  fxLayout.xs="column"
+  fxLayoutAlign="space-between start"
+  fxLayoutAlign.xs="center start">
+
+  <div fxFlex="70">
+    <app-register></app-register>
+  </div>
+</div>
+
+<div fxFlex="30"
+fxLayoutAlign="end end">
+
+
+
+<md-card >
+    <form #login="ngForm" (ngSubmit)="login();">
+      <div fxLayout="row" >
+          <div fxFlex="90">
+            <div>
+              <md-input-container>
+                <input mdInput 
+                      placeholder="username" 
+                      [(ngModel)]="username" 
+                      name="username">
+              </md-input-container>
+            </div>
+
+            <div>
+              <md-input-container>
+                <input mdInput 
+                      placeholder="password" 
+                      type ="password" 
+                      [(ngModel)]="password" 
+                      name="password">
+              </md-input-container>
+            </div>
+          </div>
+        </div>
+          <div>
+            <button md-raised-button type="submit" name="submit" color="primary">
+              Login
+            </button>
+
+      </div>
+    </form>
+</md-card>
+</div>
