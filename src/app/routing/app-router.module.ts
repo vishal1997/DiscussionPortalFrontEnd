@@ -9,15 +9,15 @@ import { CommentsComponent } from '../body/main-content/comments/add-comments/ad
 import { AllCommentsComponent } from '../body/main-content/comments/all-comments/all-comments.component';
 import { LoginComponent } from '../body/main-content/login/login.component';
 import { RegisterComponent } from '../body/main-content/register/register.component';
-
+import { AuthGuard } from '../auth/AuthGuard';
 const routes:Routes = [
-    {path:"question/:id", component: AllAnswersComponent},
-    {path:"home", component: HomeComponent},
-    {path:"answer/:id", component: AnswerComponent},
-    {path:"profile", component: ProfileComponent},
-    {path:"user/:id", component: OtherProfileComponent},
-    {path:"home", component: HomeComponent},
-    {path:"iterlogin", component: LoginComponent},
+    {path:"question/:id", component: AllAnswersComponent, canActivate: [AuthGuard] },
+    {path:"home", component: HomeComponent, canActivate: [AuthGuard] },
+    {path:"answer/:id", component: AnswerComponent, canActivate: [AuthGuard] },
+    {path:"profile", component: ProfileComponent, canActivate: [AuthGuard] },
+    {path:"user/:id", component: OtherProfileComponent, canActivate: [AuthGuard] },
+    {path:"home", component: HomeComponent, canActivate: [AuthGuard] },
+    {path:"userlogin",component: LoginComponent},
     {path:"register", component: RegisterComponent}
 ]
 
@@ -25,7 +25,8 @@ const routes:Routes = [
     imports: [
         RouterModule.forRoot(routes)
     ],
-    exports: [RouterModule]
+    exports: [RouterModule],
+    providers: [AuthGuard]
 })
 export class AppRouterModule {
 

@@ -1,6 +1,10 @@
-import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {Injectable, ErrorHandler} from '@angular/core';
+import {Http, Response, RequestOptions, Headers, URLSearchParams } from '@angular/http';
+import {Observable} from 'rxjs/Observable'; 
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+
+import { LoginResponse } from './body/main-content/login/loginResponse.component';
 
 @Injectable()
 export class AppService {
@@ -60,13 +64,30 @@ export class AppService {
                 .map((response: Response) => response.text() ? response.json(): response);
     }
 
-    loginPage(user, password) {
-        return this._http.get("/api/v1/iter"+user, password)
-                .map((response:Response) => response.text() ? response.json(): response);
-    }
 
     addNewUser(register) {
         return this._http.post("/api/v1/register", register) 
                 .map((response:Response) => response.text() ? response.json() : response);
+    }
+
+    isLoggedin:boolean;
+
+    login(usercreds) {
+
+        this.isLoggedin = false;
+        let headers = new Headers({'X-Requested-With': 'XMLHttpRequest','Access-Control-Allow-Origin' : '*','Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'});
+        let creds = {username:  usercreds.username, password: usercreds.password};
+        let body = this.serializeObj(creds);
+
+        return this._http.post("/login", body, {headers: headers})
+                .map((response:Response) => JSON.parse(JSON.stringify(response || null )));
+    }
+
+    private serializeObj(obj) {
+        var result = [];
+        for (var property in obj)
+            result.push(encodeURIComponent(property) + "=" + encodeURIComponent(obj[property]));
+    
+        return result.join("&");
     }
 }

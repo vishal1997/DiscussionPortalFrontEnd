@@ -18,14 +18,14 @@ fxLayoutAlign="end end">
 
 
 <md-card >
-    <form #login="ngForm" (ngSubmit)="login();">
+    <form #login="ngForm" (ngSubmit)="loginPage();">
       <div fxLayout="row" >
           <div fxFlex="90">
             <div>
               <md-input-container>
                 <input mdInput 
                       placeholder="username" 
-                      [(ngModel)]="username" 
+                      [(ngModel)]="data.username" 
                       name="username">
               </md-input-container>
             </div>
@@ -35,7 +35,7 @@ fxLayoutAlign="end end">
                 <input mdInput 
                       placeholder="password" 
                       type ="password" 
-                      [(ngModel)]="password" 
+                      [(ngModel)]="data.password" 
                       name="password">
               </md-input-container>
             </div>
