@@ -90,4 +90,9 @@ export class AppService {
     
         return result.join("&");
     }
+
+    logout() {
+        return this._http.get("/userlogoutpage")
+            .map((response:Response) => JSON.parse(JSON.stringify(response || null )));
+    }
 }

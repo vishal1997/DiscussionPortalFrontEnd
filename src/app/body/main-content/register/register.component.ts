@@ -14,8 +14,19 @@ export class RegisterComponent implements OnInit {
 
   register={username: "",
             password: ""};
-  
+  userId={};
+  status={};
+
   ngOnInit() {
+    if(window.localStorage.getItem('userId')) { 
+      this.logout();
+    }
+  }
+
+  logout() {
+    this.status = this._appService.logout().subscribe(res=>res.status);
+    window.localStorage.removeItem('userId');
+    this.router.navigateByUrl('/login');
   }
 
   loginPage() {
@@ -24,6 +35,9 @@ export class RegisterComponent implements OnInit {
 
   submitNewUser() {
     this._appService.addNewUser(this.register)
-    .subscribe(resAppData => resAppData.status);
+    .subscribe(resAppData => {
+      if(resAppData.status=="success") {
+        this.router.navigateByUrl("/login");
+    }}); 
   }
 }
