@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderMenuComponent } from './menu/header-menu.component';
 import { HeaderBrandComponent } from './brand/header-brand.component';
 @Component({
@@ -7,6 +7,10 @@ import { HeaderBrandComponent } from './brand/header-brand.component';
 })
 export class AppHeaderComponent {
 
+  constructor(){}
+  
+  ngOnInit() {
+  }
 }
 
 export const HeaderInternalComponents = [HeaderMenuComponent, HeaderBrandComponent]

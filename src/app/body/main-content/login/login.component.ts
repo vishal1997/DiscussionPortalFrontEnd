@@ -20,17 +20,32 @@ export class LoginComponent implements OnInit {
       password:""}
   error="";
   userId={};
+
+  loading = false;
+
+  register() {
+    this.router.navigateByUrl("/register");
+  }
+
   loginPage() {
+
+    this.loading=true;
+
     this._appService.login(this.data).subscribe((res) => {
-        if(res.headers.connection[0]=="keep-alive") {
+      console.log(res);
+        if(res.status=="200") {
           console.log(res)
           this.getUserId()
           console.log(this.userId)
           window.localStorage.setItem("userId", this.userId.toString()  );
           this.router.navigateByUrl("/home");
         }
-        else
-        console.log(res);
+        else {
+          console.log(res);
+          this.clearfields();
+          this.loading=false;
+          this.error="Failed to login";
+        }
     })
 }
 

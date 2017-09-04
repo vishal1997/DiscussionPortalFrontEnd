@@ -1,12 +1,13 @@
 
 <br />
 <br />
+<div>
 <md-card>
   <form #registerUser="ngForm"  (ngSubmit)="submitNewUser();">
     <div fxLayout="row" >
-      <div fxFlex="90">
+      <div fxFlex="100">
         <div>
-          <md-input-container style="width: 100%">
+          <md-input-container>
             <input  mdInput 
                     placeholder="Reg. No." 
                     name="reg_no"
@@ -16,7 +17,7 @@
         </div>
 
         <div>
-          <md-input-container style="width: 100%">
+          <md-input-container >
             <input  mdInput 
                     placeholder="Password" 
                     name="password" 
@@ -27,7 +28,7 @@
         </div>
 
         <div>
-          <md-input-container style="width: 100%">
+          <md-input-container >
             <input  mdInput 
                     placeholder="Confirm Password" 
                     name="confirm_password" 
@@ -37,10 +38,17 @@
         </div>
       </div>
     </div>
-    <div>
-      <button md-raised-button color="primary" type="submit" name="submit">
-        Submit
+    <div fxLayout="row" >
+      <button md-raised-button color="primary" type="submit" name="submit" fxFlex="100"> 
+        Register
       </button>
     </div>
   </form>
-<md-card>
+  <div fxLayout="row" >
+  <button md-button type="submit" name="login" (click)="loginPage();" color="primary" fxFlex="100">
+      Login
+    </button>
+  </div>
+</md-card>
+</div>
+

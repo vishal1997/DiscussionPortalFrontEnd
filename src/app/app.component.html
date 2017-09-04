@@ -1,11 +1,11 @@
-<app-header></app-header>
+<app-header *ngIf="isLoggedIn | async"></app-header>
 <div class="flex-container" 
      fxLayout="row" 
      fxLayout.xs="column"
      fxLayoutAlign="space-between start"
      fxLayoutAlign.xs="center start">
 
-    <div fxFlex="20">
+    <div fxFlex="20" *ngIf="isLoggedIn | async">
         <app-left-panel></app-left-panel>
     </div>
 
@@ -14,7 +14,7 @@
     </div>
 
     <div fxFlex="30"
-         fxLayoutAlign="end end">
+         fxLayoutAlign="end end" *ngIf="isLoggedIn | async">
         <app-right-panel></app-right-panel>
     </div>
 </div>

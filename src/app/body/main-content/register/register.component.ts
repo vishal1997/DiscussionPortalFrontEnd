@@ -1,21 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../../app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  providers:[AppService],
-  host:{'style':'width:100%'}
+  providers:[AppService]
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private _appService:AppService) { }
+  constructor(private _appService:AppService, private router:Router) { }
 
   register={username: "",
             password: ""};
   
   ngOnInit() {
+  }
+
+  loginPage() {
+    this.router.navigateByUrl("/login");
   }
 
   submitNewUser() {
