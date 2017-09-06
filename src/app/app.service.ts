@@ -50,7 +50,7 @@ export class AppService {
     }
 
     getUserId() {
-        return this._http.get("/api/v1/user")
+        return this._http.get("/api/v1/me")
                 .map((response:Response) => response.json());
     }
 
@@ -94,5 +94,15 @@ export class AppService {
     logout() {
         return this._http.get("/userlogoutpage")
             .map((response:Response) => JSON.parse(JSON.stringify(response || null )));
+    }
+
+    getQuestionsByUserId() {
+        return this._http.get("/api/v1/questions")
+            .map((response:Response) => response.json());
+    }
+
+    getQuestionsByOtherUserId(userId) {
+        return this._http.get("/api/v1/"+userId+"/questions")
+            .map((response:Response) => response.json());
     }
 }

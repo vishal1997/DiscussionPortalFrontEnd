@@ -13,12 +13,19 @@ import { UtilComponent } from '../../../app.util';
 export class OtherProfileComponent implements OnInit {
 
   constructor(private _appService:AppService, private router:Router, private util:UtilComponent, private _route:ActivatedRoute) { }
-  otherUser =[]
+  otherUser =[];
+  questions=[];
+  userId={}
    ngOnInit() {
-    let userId = this._route.snapshot.params['id']; 
-    this._appService.getOtherUserDetails(userId)
+
+    this.userId = this._route.snapshot.params['id']; 
+    this._appService.getOtherUserDetails(this.userId)
     .subscribe(resAppData => this.updateUserData(resAppData));
+
+    this._appService.getQuestionsByOtherUserId(this.userId)
+    .subscribe((resApp)=> this.questions= resApp);
   }
+
   updateUserData(data) {
     this.otherUser = data;
     this.dataLoaded = true;

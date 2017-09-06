@@ -10,6 +10,8 @@ import { AllCommentsComponent } from '../body/main-content/comments/all-comments
 import { LoginComponent } from '../body/main-content/login/login.component';
 import { RegisterComponent } from '../body/main-content/register/register.component';
 import { AuthGuard } from '../auth/AuthGuard';
+import { QuestionsComponent } from '../body/main-content/questions/questions.component';
+
 const routes:Routes = [
     {path:"question/:id", component: AllAnswersComponent, canActivate: [AuthGuard] },
     {path:"home", component: HomeComponent, canActivate: [AuthGuard] },
@@ -38,5 +40,6 @@ export const RoutingInternalComponents = [
     AnswerComponent,
     ProfileComponent, 
     OtherProfileComponent,
-    LoginComponent
+    LoginComponent,
+    QuestionsComponent
 ] 

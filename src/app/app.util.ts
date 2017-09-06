@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AppService } from './app.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,8 +8,10 @@ import { AppService } from './app.service';
   providers: [AppService]
 })
 export class UtilComponent {
-    constructor(private _appService:AppService) { }
+    constructor(private _appService:AppService, private router:Router) { }
     res=[];
+    nameIdPair={user_id:"", name:"" }
+    status={}
     ngOnInit() {
     
     }
@@ -22,4 +24,16 @@ export class UtilComponent {
         this._appService.agreeDisagree(answerId, "disagree")
         .subscribe(resAppData => this.res = resAppData);
     }
+
+    getUserId() {
+        this._appService.getUserId()
+        .subscribe((resAppData) => {this.nameIdPair= resAppData});
+    }
+
+    logout() {
+        this.status = this._appService.logout().subscribe(res=>res.status);
+        window.localStorage.removeItem('userId');
+        this.router.navigate(['/login']);
+        location.reload();
+      }
 }

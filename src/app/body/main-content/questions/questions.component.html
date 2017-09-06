@@ -1,0 +1,22 @@
+<br />
+<br />
+<div *ngFor="let question of questions">
+    <md-card >             
+      <md-card-header>
+        <div md-card-avatar>
+            <md-icon>person</md-icon>
+        </div>
+        <md-card-title >{{question.owner}}</md-card-title>
+        <md-card-subtitle>{{question.creationDate | date}}</md-card-subtitle>
+            <md-chip-list>
+                <md-chip>Education</md-chip>
+            </md-chip-list>
+      </md-card-header>
+      <md-card-content>
+      <h3 (click)=onSelect(question.questionId) style="cursor: pointer">
+          {{question.question}}
+      </h3>
+      </md-card-content>
+    </md-card>
+    <br /> 
+</div>

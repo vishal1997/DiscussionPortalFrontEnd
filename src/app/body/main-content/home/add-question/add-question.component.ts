@@ -18,7 +18,7 @@ export class AddQuestionComponent implements OnInit {
   /**
    * Add new question.
    */
- 
+
   submitNewQuestion() {
     this.addQuestionProgress = true;
     this._appService.addQuestion(this.question)

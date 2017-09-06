@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../../app.service';
 import { Router } from '@angular/router';
-
+import { UtilComponent } from '../../../app.util';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers:[AppService]
+  providers:[AppService, UtilComponent]
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _appService:AppService, private router:Router) { }
+  constructor(private _appService:AppService, private router:Router, private util:UtilComponent) { }
 
   data={username:"",
   password:""}
@@ -21,16 +21,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if(window.localStorage.getItem('userId')) { 
-      this.logout();
+      this.util.logout();
     }
     this.clearfields();
   }
 
-  logout() {
-    this.status = this._appService.logout().subscribe(res=>res.status);
-    window.localStorage.removeItem('userId');
-    this.router.navigateByUrl('/login');
-  }
 
   register() {
     this.router.navigateByUrl("/register");
