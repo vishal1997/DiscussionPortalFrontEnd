@@ -7,7 +7,7 @@
         </div>
         <div>
         <md-card-title (click)=onSelectUserId(answer.answeredBy) style="cursor: pointer">
-          {{comment.userId}}
+          {{comment.name}}
         </md-card-title>
         <md-card-subtitle>{{comment.date | date}}</md-card-subtitle>
         </div>
@@ -17,7 +17,7 @@
         </md-card-content>
         <md-card-actions align="center">
             <button md-button color="primary">{{comment.noOfAgree}} Agree</button>
-            <button md-button color="warn">{{comment.noOfDisAgree}} Disagree</button>
+            <button md-button color="warn">{{comment.noOfDisagree}} Disagree</button>
         </md-card-actions>
     </md-card>
   <br />

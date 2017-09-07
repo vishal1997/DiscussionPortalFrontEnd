@@ -50,6 +50,11 @@ export class AppService {
     }
 
     getUserId() {
+        return this._http.get("/api/v1/user")
+                .map((response:Response) => response.json());
+    }
+
+    getNameIdPair() {
         return this._http.get("/api/v1/me")
                 .map((response:Response) => response.json());
     }
@@ -103,6 +108,11 @@ export class AppService {
 
     getQuestionsByOtherUserId(userId) {
         return this._http.get("/api/v1/"+userId+"/questions")
+            .map((response:Response) => response.json());
+    }
+
+    getUserProfileDetails() {
+        return this._http.get("/api/v1/userdetails") 
             .map((response:Response) => response.json());
     }
 }

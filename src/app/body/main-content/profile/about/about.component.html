@@ -1,0 +1,85 @@
+<br />
+<div >
+  <div fxLayout="row">
+    <div fxFlex="100">
+      <md-card style="width: 90%">             
+        <md-card-header>
+          <md-card-title >{{userDetails.name}}</md-card-title>
+          <md-card-subtitle>{{userDetails.branch}}</md-card-subtitle>
+        </md-card-header>
+      </md-card>
+    </div>
+  </div>
+
+
+  <div fxLayout="row" >
+    <div fxFlex="50">
+      <md-card style="width: 90%">
+        <md-card-content>
+          <b>Basic Info</b>
+        </md-card-content>
+      </md-card>
+      <md-card style="width: 90%">
+        <md-card-header>
+          <md-card-title >Date of birth</md-card-title>
+          <md-card-subtitle>{{userDetails.dob}}</md-card-subtitle>
+        </md-card-header>
+
+        <md-card-header>
+          <md-card-title >Gender</md-card-title>
+          <md-card-subtitle>{{userDetails.gender}}</md-card-subtitle>
+        </md-card-header>
+      </md-card>
+    </div>
+
+    <div fxFlex="50">  
+      <md-card style="width: 80%">
+        <md-card-content>
+          <b>Academic</b>
+        </md-card-content>
+      </md-card>
+
+      <md-card style="width: 80%">
+        <md-card-header>
+          <md-card-title >Admission Year</md-card-title>
+          <md-card-subtitle>{{userDetails.admissionYear}}</md-card-subtitle>
+        </md-card-header>
+
+        <md-card-header>
+          <md-card-title >Seciton</md-card-title>
+          <md-card-subtitle>{{userDetails.sec}}</md-card-subtitle>
+        </md-card-header>
+      </md-card>
+    </div>
+  </div>
+
+  <div fxLayout="row">
+    <div fxFlex="100">
+      <md-card style="width: 90%">
+        <md-card-content>
+          <b>Contacts</b>
+        </md-card-content>
+      </md-card>
+
+      <md-card style="width: 90%">
+        <md-card-header>
+          <md-card-title >Email-Id</md-card-title>
+          <md-card-subtitle>{{userDetails.emailId}}</md-card-subtitle>
+        </md-card-header>
+
+        <md-card-header>
+          <md-card-title >City</md-card-title>
+          <md-card-subtitle>{{userDetails.city}}</md-card-subtitle>
+        </md-card-header>
+
+        <md-card-header>
+          <md-card-title >State</md-card-title>
+          <md-card-subtitle>{{userDetails.state}}</md-card-subtitle>
+        </md-card-header>
+      </md-card>
+    </div>
+  </div>
+
+  <br /> 
+
+</div>

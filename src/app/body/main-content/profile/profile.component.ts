@@ -14,10 +14,12 @@ export class ProfileComponent implements OnInit {
 
   constructor(private _appService:AppService, private router:Router, private util:UtilComponent) { }
   user = [];
+  userDetails={};
   ngOnInit() {
     this._appService.getUserDetails()
-    .subscribe(resAppData => this.updateUserData(resAppData));
+    .subscribe(resAppData => {this.updateUserData(resAppData)});
   }
+
   updateUserData(data) {
     this.user = data;
     this.dataLoaded = true;

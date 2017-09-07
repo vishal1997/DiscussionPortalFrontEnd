@@ -19,7 +19,7 @@
     <md-card-header>
       <div md-card-avatar><md-icon>person</md-icon></div>
       <md-card-title (click)=onSelectUserId(answer.answeredBy) style="cursor: pointer">
-        {{answer.answeredBy}}
+        {{answer.answeredByName}}
       </md-card-title>
       <md-card-subtitle>{{answer.date | date}}</md-card-subtitle>
       <md-chip-list>

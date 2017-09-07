@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
   constructor(private _appService:AppService, private router:Router, private util:UtilComponent) { }
   data = [];
   res =[];
-  nameIdPair={user_id:"", name:""};
   userId={};
   userAgree=false;
   userDisagree=false;
@@ -24,14 +23,14 @@ export class HomeComponent implements OnInit {
     this._appService.getFeeds()
     .subscribe(resAppData => this.updateUserData(resAppData));
 
-    this.getUserId();
+    this.util.getUserId();
   }
 
   onSelectComment(id) {
     this.router.navigate(['/answer', id]);
   }
   getDisagreeStatus(disagreeList) {
-    this.userId = this.nameIdPair.user_id;
+    this.userId = this.util.userId;
     if(disagreeList) {
       for(let ele of disagreeList) {
         if(ele==this.userId) {  
@@ -45,7 +44,7 @@ export class HomeComponent implements OnInit {
   }
 
   getAgreeStatus(agreeList) {
-    this.userId = this.nameIdPair.user_id;
+    this.userId = this.util.userId;
     if(agreeList) {
       for(let ele of agreeList) {
         if(ele == this.userId) {
@@ -80,10 +79,5 @@ export class HomeComponent implements OnInit {
 
   disagree(answerId) {
     this.util.disagree(answerId);
-  }
-
-  getUserId() {
-    this._appService.getUserId()
-    .subscribe((resAppData) => this.nameIdPair= resAppData);
   }
 }

@@ -5,7 +5,7 @@
             <div md-card-avatar>
                 <md-icon>person</md-icon>
             </div>
-            <md-card-title>{{app.owner}}</md-card-title>
+            <md-card-title>{{app.ownerName}}</md-card-title>
             <md-card-subtitle>{{app.creationDate | date}}</md-card-subtitle>
             <md-chip-list>
                 <md-chip>Education</md-chip>
@@ -69,7 +69,7 @@
         <div md-card-avatar>
             <md-icon>person</md-icon>
         </div>
-        <md-card-title (click)=onSelectUserId(answer.answeredBy) style="cursor: pointer">{{answer.answerBy}}</md-card-title>
+        <md-card-title (click)=onSelectUserId(answer.answeredBy) style="cursor: pointer">{{answer.name}}</md-card-title>
         <md-card-subtitle>{{answer.date | date}}</md-card-subtitle>
             <md-chip-list>
                 <md-chip>Education</md-chip>
@@ -89,7 +89,7 @@
             <button md-button color="warn">{{answer.noOfDisAgree}} Disagree</button>
             <button md-button 
                 color="primary" 
-                (click)="onSelectComment(answer.answerId)">
+                (click)="onSelect(answer.answerId)">
                 Comments
             </button>
         </md-card-actions>

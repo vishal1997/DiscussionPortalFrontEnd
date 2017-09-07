@@ -10,8 +10,8 @@
         <div md-card-avatar>
             <md-icon>person</md-icon>
         </div>
-        <md-card-title (click)=onSelectUserId(answer.answeredBy) style="cursor: pointer">{{answer.answeredBy}}</md-card-title>
-        <md-card-subtitle>KIIT</md-card-subtitle>
+        <md-card-title (click)=onSelectUserId(answer.answeredBy) style="cursor: pointer">{{answer.answeredByName}}</md-card-title>
+        <md-card-subtitle>{{answer.date | date}}</md-card-subtitle>
             <md-chip-list>
                 <md-chip>Education</md-chip>
             </md-chip-list>

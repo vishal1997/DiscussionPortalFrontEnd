@@ -16,14 +16,15 @@ import { CommentsComponent } from './body/main-content/comments/add-comments/add
 import { AllCommentsComponent } from './body/main-content/comments/all-comments/all-comments.component';
 import { LoginComponent } from './body/main-content/login/login.component';
 import { RegisterComponent } from './body/main-content/register/register.component';
-import { QuestionsComponent } from './body/main-content/questions/questions.component';
+import { QuestionsComponent } from './body/main-content/profile/questions/questions.component';
+import { AboutComponent } from './body/main-content/profile/about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent, AppInternalComponents, RoutingInternalComponents, HomeComponent, 
     AddQuestionComponent, AnswerComponent, ProfileComponent, ProfileComponent, 
     UtilComponent, CommentsComponent, AllCommentsComponent, LoginComponent, RegisterComponent, 
-    QuestionsComponent
+    QuestionsComponent, AboutComponent
   ],
   
   imports: [
