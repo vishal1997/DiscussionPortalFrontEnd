@@ -115,4 +115,9 @@ export class AppService {
         return this._http.get("/api/v1/userdetails") 
             .map((response:Response) => response.json());
     }
+
+    getOtherUserProfile(userId) {
+        return this._http.get("/api/v1/"+userId+"/userprofile")
+        .map((response:Response) => response.json());
+    }
 }
