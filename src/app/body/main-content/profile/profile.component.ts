@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../../app.service';
 import { Router } from '@angular/router';
 import { UtilComponent } from '../../../app.util';
+import { MdSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-profile',
@@ -12,10 +13,15 @@ import { UtilComponent } from '../../../app.util';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private _appService:AppService, private router:Router, private util:UtilComponent) { }
+  constructor(private _appService:AppService, private router:Router, private util:UtilComponent,
+    public snackBar: MdSnackBar) { }
   user = [];
   userDetails={};
   ngOnInit() {
+    this.getUserDetails();
+  }
+
+  getUserDetails() {
     this._appService.getUserDetails()
     .subscribe(resAppData => {this.updateUserData(resAppData)});
   }
@@ -40,10 +46,21 @@ export class ProfileComponent implements OnInit {
 
   agree(answerId) {
     this.util.agree(answerId); 
-    }
+  }
   
-    disagree(answerId) {
-      this.util.disagree(answerId);
-    }
+  disagree(answerId) {
+    this.util.disagree(answerId);
+  }
 
+  deleteAnswer(answerId) {
+    this._appService.deleteAnswer(answerId)
+    .subscribe(resApp => this.openSnackBar("Delete", resApp.status ));
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+    this.getUserDetails();
+  }
 }

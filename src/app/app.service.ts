@@ -120,4 +120,19 @@ export class AppService {
         return this._http.get("/api/v1/"+userId+"/userprofile")
         .map((response:Response) => response.json());
     }
+
+    deleteAnswer(answerId) {
+        return this._http.get("/api/v1/delete/answer/"+answerId)
+        .map((response:Response)=>response.json());
+    }
+
+    disagreeComment(commentId, opinion) {
+        return this._http.put("/api/v1/comments/opinion/"+commentId, opinion)
+            .map((response:Response) => response.json());
+    }
+
+    agreeComment(commentId, opinion) {
+        return this._http.put("/api/v1/comments/opinion/"+commentId, opinion)
+            .map((response:Response) => response.json());
+    }
 }

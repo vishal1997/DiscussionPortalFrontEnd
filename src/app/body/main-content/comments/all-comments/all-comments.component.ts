@@ -24,4 +24,14 @@ export class AllCommentsComponent implements OnInit {
                     .subscribe(resAppData => this.comments = resAppData);
   }
 
+  agreeComment(commentId) {
+    this._appService.agreeComment(commentId, "agree")
+                    .subscribe(resAppData=>resAppData);
+  }
+
+  disagreeComment(commentId) {
+    this._appService.disagreeComment(commentId,"disagree")
+                    .subscribe(resAppData => resAppData);
+  }
+
 }

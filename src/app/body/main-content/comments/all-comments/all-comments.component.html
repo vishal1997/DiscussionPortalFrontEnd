@@ -16,8 +16,8 @@
             {{comment.comment}}
         </md-card-content>
         <md-card-actions align="center">
-            <button md-button color="primary">{{comment.noOfAgree}} Agree</button>
-            <button md-button color="warn">{{comment.noOfDisagree}} Disagree</button>
+            <button md-button color="primary" (click)="agreeComment(comment.commentId);">{{comment.noOfAgree}} Agree</button>
+            <button md-button color="warn" (click)="disagreeComment(comment.commentId);">{{comment.noOfDisagree}} Disagree</button>
         </md-card-actions>
     </md-card>
   <br />

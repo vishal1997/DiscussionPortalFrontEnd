@@ -30,6 +30,15 @@
                 <md-chip-list>
                     <md-chip>Education</md-chip>
                 </md-chip-list>
+                <span fxFlex></span>
+                <md-menu #answerMenu="mdMenu" xPosition="after" yPosition="below" [overlapTrigger]="false" >
+                <button md-menu-item (click)="deleteAnswer(answer.answerId);"> Delete </button>
+                </md-menu>
+                
+                <button md-icon-button  [mdMenuTriggerFor]="answerMenu" >
+                    <md-icon>more_vert</md-icon>
+                </button>
+
             </md-card-header>
             <md-card-content>
                 <h3 (click)=onSelect(answer.questionId) style="cursor: pointer">

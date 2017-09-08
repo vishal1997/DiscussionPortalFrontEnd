@@ -44,7 +44,7 @@
           {{answer.noOfAgree}} Agree
         </button>
 
-        <button md-button 
+        <button md-button mode="indeterminate" 
           color="{{ (getDisagreeStatus(answer.disagree)) ?  'warn': '#e7e7e7' }}"  
           (click)=disagree(answer.answerId)>{{answer.noOfDisagree}} Disagree
         </button>

@@ -74,10 +74,18 @@ export class HomeComponent implements OnInit {
 
 
   agree(answerId) {
+    if(this.userAgree)
+      this.userAgree=false;
+    else
+      this.userAgree=true;
     this.util.agree(answerId); 
   }
 
   disagree(answerId) {
+    if(this.userAgree)
+      this.userDisagree=false;
+    else
+      this.userDisagree=true;
     this.util.disagree(answerId);
   }
 }
