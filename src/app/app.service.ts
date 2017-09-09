@@ -39,8 +39,8 @@ export class AppService {
                 .map((response:Response) => response.json());
     }
 
-    getFeeds() {
-        return this._http.get("/api/v1/home")
+    getFeeds(pageNo) {
+        return this._http.put("/api/v1/home", pageNo.toString())
                 .map((response:Response) => response.json());
     }
 

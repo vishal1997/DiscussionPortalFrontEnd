@@ -59,5 +59,28 @@
   </md-card>
   <br />
 </div>
+<div>
+    <md-card *ngIf="!data.length && dataLoaded">
+        <md-card-header>No more data</md-card-header>
+    </md-card>
+</div>
+
+<div>
+  <button 
+    md-button 
+    color="basic"
+    *ngIf="dataLoaded && pageno!=0"
+    (click)="onClickPrevious();">
+    Previous Page
+  </button>
+  <span fxFlex></span>
+  <button 
+    md-button 
+    color="basic"
+    *ngIf="dataLoaded && data.length"
+    (click)="onClickNext();">
+    Next Page
+  </button>
+</div>
 
 

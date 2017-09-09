@@ -72,7 +72,7 @@
         <md-card-title (click)=onSelectUserId(answer.userId) style="cursor: pointer">{{answer.name}}</md-card-title>
         <md-card-subtitle>{{answer.date | date}}</md-card-subtitle>
             <md-chip-list>
-                <md-chip>Education</md-chip>
+                <md-chip>{{answer.sec}}</md-chip>
             </md-chip-list>
             <span fxFlex></span>
             <button md-icon-button (click)=onSelect(answer.answerId)>

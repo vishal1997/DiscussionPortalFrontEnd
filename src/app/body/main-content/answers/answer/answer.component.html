@@ -13,7 +13,7 @@
         <md-card-title (click)=onSelectUserId(answer.answeredBy) style="cursor: pointer">{{answer.answeredByName}}</md-card-title>
         <md-card-subtitle>{{answer.date | date}}</md-card-subtitle>
             <md-chip-list>
-                <md-chip>Education</md-chip>
+                <md-chip>{{answer.sec}}</md-chip>
             </md-chip-list>
         </md-card-header>
         <md-card-content>

@@ -18,7 +18,7 @@ import { LoginComponent } from './body/main-content/login/login.component';
 import { RegisterComponent } from './body/main-content/register/register.component';
 import { QuestionsComponent } from './body/main-content/profile/questions/questions.component';
 import { AboutComponent } from './body/main-content/profile/about/about.component';
-
+import { VirtualScrollModule } from 'angular2-virtual-scroll';
 @NgModule({
   declarations: [
     AppComponent, AppInternalComponents, RoutingInternalComponents, HomeComponent, 
@@ -29,7 +29,7 @@ import { AboutComponent } from './body/main-content/profile/about/about.componen
   
   imports: [
     BrowserModule, FormsModule, HttpModule, MaterialModule, AppRouterModule, 
-    BrowserAnimationsModule, FlexLayoutModule
+    BrowserAnimationsModule, FlexLayoutModule, VirtualScrollModule
   ],
 
   providers: [ {provide: XSRFStrategy, useFactory: xsrfFactory}],

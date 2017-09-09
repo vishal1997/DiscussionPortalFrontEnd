@@ -18,12 +18,15 @@ export class HomeComponent implements OnInit {
   userId={};
   userAgree=false;
   userDisagree=false;
+  pageno:number;
   ngOnInit() {
+    this.pageno=0;
+    this.getFeeds();
+  }
 
-    this._appService.getFeeds()
+  getFeeds() {
+    this._appService.getFeeds(this.pageno)
     .subscribe(resAppData => this.updateUserData(resAppData));
-
-    this.util.getUserId();
   }
 
   onSelectComment(id) {
@@ -60,6 +63,7 @@ export class HomeComponent implements OnInit {
   updateUserData(data) {
     this.data = data;
     this.dataLoaded = true;
+    window.scrollTo(0,0);
   }
 
   dataLoaded = false;
@@ -87,5 +91,17 @@ export class HomeComponent implements OnInit {
     else
       this.userDisagree=true;
     this.util.disagree(answerId);
+  }
+
+  onClickNext() {
+    this.pageno++;
+    this.getFeeds();
+  }
+
+  onClickPrevious() {
+    if(this.pageno!=0) {
+      this.pageno--;
+      this.getFeeds();
+    }
   }
 }

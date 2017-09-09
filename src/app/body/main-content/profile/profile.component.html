@@ -59,6 +59,11 @@
                 </button>
             </div>
             </md-card-actions>
+            <md-card-footer>
+                <md-progress-bar mode="indeterminate" 
+                                    *ngIf="deleteAnswerProgress">
+                </md-progress-bar>
+            </md-card-footer>
         </md-card>
         <br />
         </div>
