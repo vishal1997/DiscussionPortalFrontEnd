@@ -19,7 +19,7 @@
     <md-card-header>
       <div md-card-avatar><md-icon>person</md-icon></div>
       <md-card-title (click)=onSelectUserId(answer.answeredBy) style="cursor: pointer">
-        {{answer.answeredBy}}
+        {{answer.answeredByName}}
       </md-card-title>
       <md-card-subtitle>{{answer.date | date}}</md-card-subtitle>
       <md-chip-list>
@@ -44,7 +44,7 @@
           {{answer.noOfAgree}} Agree
         </button>
 
-        <button md-button 
+        <button md-button mode="indeterminate" 
           color="{{ (getDisagreeStatus(answer.disagree)) ?  'warn': '#e7e7e7' }}"  
           (click)=disagree(answer.answerId)>{{answer.noOfDisagree}} Disagree
         </button>
@@ -58,6 +58,29 @@
     </md-card-actions>
   </md-card>
   <br />
+</div>
+<div>
+    <md-card *ngIf="!data.length && dataLoaded">
+        <md-card-header>No more data</md-card-header>
+    </md-card>
+</div>
+
+<div>
+  <button 
+    md-button 
+    color="basic"
+    *ngIf="dataLoaded && pageno!=0"
+    (click)="onClickPrevious();">
+    Previous Page
+  </button>
+  <span fxFlex></span>
+  <button 
+    md-button 
+    color="basic"
+    *ngIf="dataLoaded && data.length"
+    (click)="onClickNext();">
+    Next Page
+  </button>
 </div>
 
 

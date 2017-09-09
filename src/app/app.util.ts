@@ -12,6 +12,7 @@ export class UtilComponent {
     res=[];
     nameIdPair={user_id:"", name:"" }
     status={}
+    userId={}
     ngOnInit() {
     
     }
@@ -27,7 +28,12 @@ export class UtilComponent {
 
     getUserId() {
         this._appService.getUserId()
-        .subscribe((resAppData) => {this.nameIdPair= resAppData});
+        .subscribe((resAppData) => {this.userId= resAppData});
+    }
+
+    getNameIdPair() {
+        this._appService.getNameIdPair() 
+        .subscribe((resAppData) => {this.nameIdPair=resAppData})
     }
 
     logout() {

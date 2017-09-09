@@ -16,6 +16,7 @@ export class OtherProfileComponent implements OnInit {
   otherUser =[];
   questions=[];
   userId={}
+  userDetails={}
    ngOnInit() {
 
     this.userId = this._route.snapshot.params['id']; 
@@ -24,6 +25,9 @@ export class OtherProfileComponent implements OnInit {
 
     this._appService.getQuestionsByOtherUserId(this.userId)
     .subscribe((resApp)=> this.questions= resApp);
+
+    this._appService.getOtherUserProfile(this.userId)
+    .subscribe((resApp)=> this.userDetails=resApp);
   }
 
   updateUserData(data) {

@@ -25,11 +25,20 @@
                 <div md-card-avatar>
                     <md-icon>person</md-icon>
                 </div>
-                <md-card-title >{{answer.answeredBy}}</md-card-title>
+                <md-card-title >{{answer.answeredByName}}</md-card-title>
                 <md-card-subtitle>{{answer.date | date}}</md-card-subtitle>
                 <md-chip-list>
                     <md-chip>Education</md-chip>
                 </md-chip-list>
+                <span fxFlex></span>
+                <md-menu #answerMenu="mdMenu" xPosition="after" yPosition="below" [overlapTrigger]="false" >
+                <button md-menu-item (click)="deleteAnswer(answer.answerId);"> Delete </button>
+                </md-menu>
+                
+                <button md-icon-button  [mdMenuTriggerFor]="answerMenu" >
+                    <md-icon>more_vert</md-icon>
+                </button>
+
             </md-card-header>
             <md-card-content>
                 <h3 (click)=onSelect(answer.questionId) style="cursor: pointer">
@@ -50,13 +59,21 @@
                 </button>
             </div>
             </md-card-actions>
+            <md-card-footer>
+                <md-progress-bar mode="indeterminate" 
+                                    *ngIf="deleteAnswerProgress">
+                </md-progress-bar>
+            </md-card-footer>
         </md-card>
         <br />
         </div>
     </md-tab>
     <md-tab label="Questions">
         <app-questions></app-questions>
- </md-tab>
+    </md-tab>
+    <md-tab label="About">
+        <app-about></app-about>
+    </md-tab>
 </md-tab-group>
 
 

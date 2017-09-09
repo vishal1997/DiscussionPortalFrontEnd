@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../../../app.service';
-import { UtilComponent } from '../../../app.util';
+import { AppService } from '../../../../app.service';
+import { UtilComponent } from '../../../../app.util';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-questions',

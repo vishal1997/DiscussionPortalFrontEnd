@@ -34,9 +34,10 @@ export class LoginComponent implements OnInit {
   loginPage() {
     this.loading=true;
     this._appService.login(this.data).subscribe((res) => {
+      console.log
         if(res.status=="200") {
-          this.getUserId()
-          window.localStorage.setItem("userId", this.userId.toString()  );
+          this.util.getUserId()
+          window.localStorage.setItem("userId", this.util.userId.toString());
           this.router.navigateByUrl("/home");
         }
         else {
@@ -45,11 +46,6 @@ export class LoginComponent implements OnInit {
           this.error="Failed to login";
         }
     })
-  }
-
-  getUserId() {
-    this.userId=  this._appService.getUserId()
-    .subscribe((resAppData) => this.userId = resAppData);  
   }
 
   clearfields() {

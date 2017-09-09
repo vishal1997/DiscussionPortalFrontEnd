@@ -39,8 +39,8 @@ export class AppService {
                 .map((response:Response) => response.json());
     }
 
-    getFeeds() {
-        return this._http.get("/api/v1/home")
+    getFeeds(pageNo) {
+        return this._http.put("/api/v1/home", pageNo.toString())
                 .map((response:Response) => response.json());
     }
 
@@ -50,6 +50,11 @@ export class AppService {
     }
 
     getUserId() {
+        return this._http.get("/api/v1/user")
+                .map((response:Response) => response.json());
+    }
+
+    getNameIdPair() {
         return this._http.get("/api/v1/me")
                 .map((response:Response) => response.json());
     }
@@ -103,6 +108,31 @@ export class AppService {
 
     getQuestionsByOtherUserId(userId) {
         return this._http.get("/api/v1/"+userId+"/questions")
+            .map((response:Response) => response.json());
+    }
+
+    getUserProfileDetails() {
+        return this._http.get("/api/v1/userdetails") 
+            .map((response:Response) => response.json());
+    }
+
+    getOtherUserProfile(userId) {
+        return this._http.get("/api/v1/"+userId+"/userprofile")
+        .map((response:Response) => response.json());
+    }
+
+    deleteAnswer(answerId) {
+        return this._http.get("/api/v1/delete/answer/"+answerId)
+        .map((response:Response)=>response.json());
+    }
+
+    disagreeComment(commentId, opinion) {
+        return this._http.put("/api/v1/comments/opinion/"+commentId, opinion)
+            .map((response:Response) => response.json());
+    }
+
+    agreeComment(commentId, opinion) {
+        return this._http.put("/api/v1/comments/opinion/"+commentId, opinion)
             .map((response:Response) => response.json());
     }
 }

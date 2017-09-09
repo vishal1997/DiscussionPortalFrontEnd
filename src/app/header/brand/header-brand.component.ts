@@ -13,7 +13,7 @@ export class HeaderBrandComponent {
   constructor(private _appService: AppService, private router:Router, private util:UtilComponent) {}
 
   ngOnInit() {
-    this.util.getUserId();
+    this.util.getNameIdPair();
   }
   
   profile() {

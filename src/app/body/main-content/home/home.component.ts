@@ -15,23 +15,25 @@ export class HomeComponent implements OnInit {
   constructor(private _appService:AppService, private router:Router, private util:UtilComponent) { }
   data = [];
   res =[];
-  nameIdPair={user_id:"", name:""};
   userId={};
   userAgree=false;
   userDisagree=false;
+  pageno:number;
   ngOnInit() {
+    this.pageno=0;
+    this.getFeeds();
+  }
 
-    this._appService.getFeeds()
+  getFeeds() {
+    this._appService.getFeeds(this.pageno)
     .subscribe(resAppData => this.updateUserData(resAppData));
-
-    this.getUserId();
   }
 
   onSelectComment(id) {
     this.router.navigate(['/answer', id]);
   }
   getDisagreeStatus(disagreeList) {
-    this.userId = this.nameIdPair.user_id;
+    this.userId = this.util.userId;
     if(disagreeList) {
       for(let ele of disagreeList) {
         if(ele==this.userId) {  
@@ -45,7 +47,7 @@ export class HomeComponent implements OnInit {
   }
 
   getAgreeStatus(agreeList) {
-    this.userId = this.nameIdPair.user_id;
+    this.userId = this.util.userId;
     if(agreeList) {
       for(let ele of agreeList) {
         if(ele == this.userId) {
@@ -61,6 +63,7 @@ export class HomeComponent implements OnInit {
   updateUserData(data) {
     this.data = data;
     this.dataLoaded = true;
+    window.scrollTo(0,0);
   }
 
   dataLoaded = false;
@@ -75,15 +78,30 @@ export class HomeComponent implements OnInit {
 
 
   agree(answerId) {
+    if(this.userAgree)
+      this.userAgree=false;
+    else
+      this.userAgree=true;
     this.util.agree(answerId); 
   }
 
   disagree(answerId) {
+    if(this.userAgree)
+      this.userDisagree=false;
+    else
+      this.userDisagree=true;
     this.util.disagree(answerId);
   }
 
-  getUserId() {
-    this._appService.getUserId()
-    .subscribe((resAppData) => this.nameIdPair= resAppData);
+  onClickNext() {
+    this.pageno++;
+    this.getFeeds();
+  }
+
+  onClickPrevious() {
+    if(this.pageno!=0) {
+      this.pageno--;
+      this.getFeeds();
+    }
   }
 }
