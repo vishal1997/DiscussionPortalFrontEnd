@@ -15,14 +15,14 @@ export class OtherProfileComponent implements OnInit {
   constructor(private _appService:AppService, private router:Router, private util:UtilComponent, private _route:ActivatedRoute) { }
   otherUser =[];
   questions=[];
-  userId={}
-  userDetails={}
+  userId={};
+  pageno:number;
+  userDetails={};
    ngOnInit() {
-
+    this.pageno=0;
     this.userId = this._route.snapshot.params['id']; 
-    this._appService.getOtherUserDetails(this.userId)
-    .subscribe(resAppData => this.updateUserData(resAppData));
 
+    this.getUserDetails();
     this._appService.getQuestionsByOtherUserId(this.userId)
     .subscribe((resApp)=> this.questions= resApp);
 
@@ -30,6 +30,10 @@ export class OtherProfileComponent implements OnInit {
     .subscribe((resApp)=> this.userDetails=resApp);
   }
 
+  getUserDetails() {
+    this._appService.getOtherUserDetails(this.userId, this.pageno)
+    .subscribe(resAppData => this.updateUserData(resAppData));
+  }
   updateUserData(data) {
     this.otherUser = data;
     this.dataLoaded = true;
@@ -50,5 +54,17 @@ export class OtherProfileComponent implements OnInit {
     disagree(answerId) {
       this.util.disagree(answerId);
     }
+
+  onClickNext() {
+    this.pageno++;
+    this.getUserDetails();
+  }
+
+  onClickPrevious() {
+    if(this.pageno!=0) {
+      this.pageno--;
+      this.getUserDetails();
+    }
+  }
 
 }

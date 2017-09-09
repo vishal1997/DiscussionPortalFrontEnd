@@ -17,12 +17,14 @@ export class ProfileComponent implements OnInit {
     public snackBar: MdSnackBar) { }
   user = [];
   userDetails={};
+  pageno:number
   ngOnInit() {
+    this.pageno=0;
     this.getUserDetails();
   }
 
   getUserDetails() {
-    this._appService.getUserDetails()
+    this._appService.getUserDetails(this.pageno)
     .subscribe(resAppData => {this.updateUserData(resAppData)});
   }
 
@@ -62,5 +64,16 @@ export class ProfileComponent implements OnInit {
       duration: 2000,
     });
     this.getUserDetails();
+  }
+  onClickNext() {
+    this.pageno++;
+    this.getUserDetails();
+  }
+
+  onClickPrevious() {
+    if(this.pageno!=0) {
+      this.pageno--;
+      this.getUserDetails();
+    }
   }
 }
