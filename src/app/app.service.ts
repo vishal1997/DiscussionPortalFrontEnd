@@ -29,13 +29,13 @@ export class AppService {
                 .map((response:Response) => response.json());
     }
 
-    getUserDetails() {
-        return this._http.get("/api/v1/myanswers")
+    getUserDetails(pageno) {
+        return this._http.post("/api/v1/myanswers", pageno.toString())
                 .map((response:Response) => response.json());
     }
 
-    getOtherUserDetails(userId) {
-        return this._http.get("/api/v1/" + userId + "/answers")
+    getOtherUserDetails(userId, pageno) {
+        return this._http.post("/api/v1/" + userId + "/answers", pageno.toString())
                 .map((response:Response) => response.json());
     }
 

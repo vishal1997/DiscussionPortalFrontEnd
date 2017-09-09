@@ -77,3 +77,22 @@
 </md-tab-group>
 
 
+<div>
+    <button 
+      md-button 
+      color="basic"
+      *ngIf="dataLoaded && pageno!=0"
+      (click)="onClickPrevious();">
+      Previous Page
+    </button>
+    <span fxFlex></span>
+    <button 
+      md-button 
+      color="basic"
+      *ngIf="dataLoaded && user.length"
+      (click)="onClickNext();">
+      Next Page
+    </button>
+  </div>
+
+
