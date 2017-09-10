@@ -27,6 +27,7 @@ export class SettingsComponent implements OnInit {
     
     if(this.matchPassword()) {
       this.change=true;
+      console.log(this.password);
       this._appService.onSubmitPassword(this.password)
           .subscribe((res)=>this.openSnackBar(res.status,"Done"));
     } else {

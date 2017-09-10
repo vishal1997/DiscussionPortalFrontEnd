@@ -12,6 +12,7 @@ export class HeaderBrandComponent {
   nameIdPair={user_id:"", name:"" }
   constructor(private _appService: AppService, private router:Router, private util:UtilComponent) {}
 
+  search="";
   ngOnInit() {
     this.util.getNameIdPair();
   }

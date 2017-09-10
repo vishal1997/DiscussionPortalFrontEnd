@@ -19,8 +19,15 @@
                       name="username" 
                       class="form-control"
                       minlength="10"
+                      #user="ngModel"
                       required>
               </md-input-container>                
+            </div>
+
+            <div class="md-errors-spacer invalid-block" [hidden]="user.valid || user.untouched">
+              <div  *ngIf="user.errors && user.errors.required">
+                  Username is required
+              </div>
             </div>
 
             <div>
@@ -46,7 +53,13 @@
           </div>
         </div>
           <div>
-            <button md-raised-button type="submit" name="submit" color="primary" fxFlex="100">
+            <button md-raised-button 
+                    type="submit" 
+                    name="submit" 
+                    color="primary" 
+                    fxFlex="100"
+                    [disabled]="user.errors"
+            >
               LogIn
             </button>
           </div>

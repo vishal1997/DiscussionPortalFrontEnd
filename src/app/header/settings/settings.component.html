@@ -15,6 +15,8 @@
             name="password" 
             type="password"
             [(ngModel)]="password"
+            #newpassword="ngModel"
+            minlength="8"
             required
       >
     </md-input-container>
@@ -26,6 +28,8 @@
             name="cpassword" 
             type="password"
             [(ngModel)]="cpassword"
+            #confirmpassword="ngModel"
+            minlength="8"
             required
       > 
     </md-input-container>
@@ -37,10 +41,20 @@
             {{error}}
       </div>
     </div>
+
+    <div class="md-errors-spacer invalid-block" [hidden]="newpassword.valid || newpassword.untouched">
+      <div  *ngIf="newpassword.errors && newpassword.errors.required">
+          Password is required
+      </div>
+      <div  *ngIf="newpassword.errors && newpassword.errors.minlength">
+          Min password length is 8
+      </div>
+    </div>
     <span fxFlex></span>
     <button md-raised-button 
             (click)="onSubmitPassword();" 
             color="primary"
+            [disabled]="newpassword.errors || newpassword.untouched"
     >
       Submit
     </button>

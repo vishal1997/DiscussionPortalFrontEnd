@@ -137,12 +137,12 @@ export class AppService {
     }
 
     onSubmitPassword(password) {
-        return this._http.put("/api/v1/resetpassword", password)
+        return this._http.put("/api/v1/resetpassword/", password)
             .map((response:Response) => response.json());
     }
 
     onSubmitEmail(email) {
-        return this._http.put("/api/v1/resetemail", email)
+        return this._http.put("/api/v1/resetemail/", email)
             .map((response:Response) => response.json());
     }
 }

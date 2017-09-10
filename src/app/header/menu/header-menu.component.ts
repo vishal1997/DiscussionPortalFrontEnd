@@ -11,6 +11,7 @@ export class HeaderMenuComponent {
 
   constructor(private _appService: AppService, private router:Router, private util:UtilComponent) {}
 
+  search="";
   settings() {
     this.router.navigateByUrl("/settings");
   }

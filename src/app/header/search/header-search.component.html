@@ -1,0 +1,14 @@
+<form (keydown.enter)="searchUser();">
+    <span fxFlex></span>
+    <md-input-container style="width:60%; height:30%" >
+        <md-placeholder style="width: 50%; font-size:13px; height:50%;color:white">
+            <md-icon>search</md-icon> Search
+        </md-placeholder>
+    <input mdInput  
+        #searchBox 
+        name="search-box"
+        [(ngModel)]="search"
+        style="width: 90%; font-size:12px; height:50%;"
+    />
+    </md-input-container>
+</form>
