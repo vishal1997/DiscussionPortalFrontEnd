@@ -4,7 +4,7 @@ import { HttpModule, XSRFStrategy, CookieXSRFStrategy} from '@angular/http';
 import { AppComponent, AppInternalComponents } from './app.component';
 import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { AppRouterModule, RoutingInternalComponents } from './routing/app-router.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeComponent } from './body/main-content/home/home.component';
@@ -18,18 +18,19 @@ import { LoginComponent } from './body/main-content/login/login.component';
 import { RegisterComponent } from './body/main-content/register/register.component';
 import { QuestionsComponent } from './body/main-content/profile/questions/questions.component';
 import { AboutComponent } from './body/main-content/profile/about/about.component';
+import { SettingsComponent } from './header/settings/settings.component';
 
 @NgModule({
   declarations: [
     AppComponent, AppInternalComponents, RoutingInternalComponents, HomeComponent, 
     AddQuestionComponent, AnswerComponent, ProfileComponent, ProfileComponent, 
     UtilComponent, CommentsComponent, AllCommentsComponent, LoginComponent, RegisterComponent, 
-    QuestionsComponent, AboutComponent
+    QuestionsComponent, AboutComponent, SettingsComponent
   ],
   
   imports: [
     BrowserModule, FormsModule, HttpModule, MaterialModule, AppRouterModule, 
-    BrowserAnimationsModule, FlexLayoutModule
+    BrowserAnimationsModule, FlexLayoutModule, ReactiveFormsModule
   ],
 
   providers: [ {provide: XSRFStrategy, useFactory: xsrfFactory}],

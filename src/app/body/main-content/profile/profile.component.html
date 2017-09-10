@@ -67,6 +67,29 @@
         </md-card>
         <br />
         </div>
+        <div>
+            <md-card *ngIf="!user.length && dataLoaded">
+                <md-card-header>No more data</md-card-header>
+            </md-card>
+        </div>
+        <div>
+            <button 
+                md-button 
+                color="basic"
+                *ngIf="dataLoaded && pageno!=0"
+                (click)="onClickPrevious();">
+                Previous Page
+            </button>
+            <span fxFlex></span>
+            <button 
+                md-button 
+                color="basic"
+                *ngIf="dataLoaded && user.length"
+                (click)="onClickNext();">
+                Next Page
+            </button>
+        </div>
+
     </md-tab>
     <md-tab label="Questions">
         <app-questions></app-questions>
@@ -77,22 +100,7 @@
 </md-tab-group>
 
 
-<div>
-    <button 
-      md-button 
-      color="basic"
-      *ngIf="dataLoaded && pageno!=0"
-      (click)="onClickPrevious();">
-      Previous Page
-    </button>
-    <span fxFlex></span>
-    <button 
-      md-button 
-      color="basic"
-      *ngIf="dataLoaded && user.length"
-      (click)="onClickNext();">
-      Next Page
-    </button>
-  </div>
+
+
 
 

@@ -1,0 +1,87 @@
+
+<br />
+<br/>
+<br />
+
+<md-tab-group>
+  <md-tab label="Change Password">
+    <br />
+    <br />
+    <md-input-container style="width: 70%"> 
+      <input #passwordInput 
+            mdInput 
+            placeholder="  New Password" 
+            value="" 
+            name="password" 
+            type="password"
+            [(ngModel)]="password"
+            required
+      >
+    </md-input-container>
+    <md-input-container style="width:70%">
+      <input #passwordInput 
+            mdInput 
+            placeholder="  Confirm Password" 
+            value="" 
+            name="cpassword" 
+            type="password"
+            [(ngModel)]="cpassword"
+            required
+      > 
+    </md-input-container>
+    <div  fxLayout="row">
+      <div *ngIf="invalid" 
+            fxFlex="100"
+            class="invalid-block" 
+            align="center" >
+            {{error}}
+      </div>
+    </div>
+    <span fxFlex></span>
+    <button md-raised-button 
+            (click)="onSubmitPassword();" 
+            color="primary"
+    >
+      Submit
+    </button>
+  </md-tab>
+  <md-tab label="Change Email-Id">
+    <br />
+    <br />
+    <md-input-container style="width: 70%"> 
+      <input #passwordInput 
+            mdInput 
+            placeholder="  New Email" 
+            value="" 
+            #contactemail="ngModel"
+            type="email"
+            name="email" 
+            [(ngModel)]="email"
+            required
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+            email
+      >
+    </md-input-container>
+    <span fxFlex></span>
+    <button md-raised-button 
+            (click)="onSubmitEmail();" 
+            color="primary"
+            [disabled]="contactemail.errors"
+    >
+      Submit
+    </button>
+    <div class="md-errors-spacer invalid-block" [hidden]="contactemail.valid || contactemail.untouched">
+        <div  *ngIf="contactemail.errors && contactemail.errors.required">
+            Email is required
+        </div>
+        <div  *ngIf="contactemail.errors && contactemail.errors.pattern">
+            Email is invalid
+        </div>
+    </div>
+    <md-card-footer>
+      <md-progress-bar mode="indeterminate" 
+                        *ngIf="change">
+      </md-progress-bar>
+    </md-card-footer>
+  </md-tab>
+</md-tab-group>

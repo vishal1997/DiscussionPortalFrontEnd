@@ -1,4 +1,5 @@
 <md-menu #appMenu="mdMenu" yPosition="below" [overlapTrigger]="false">
+  <button md-menu-item (click)="settings();"> Setting </button>
   <button md-menu-item (click)="util.logout();"> Logout </button>
   <button md-menu-item> Help </button>
 </md-menu>

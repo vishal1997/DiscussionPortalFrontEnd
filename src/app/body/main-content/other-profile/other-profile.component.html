@@ -2,177 +2,69 @@
         <app-add-question></app-add-question>
 </p>
 <md-card *ngIf="!dataLoaded" >
-        <md-card-header>
-        <div md-card-avatar>
-            <md-icon>person</md-icon>
-        </div>
-        </md-card-header>
-        <md-card-footer>
-            <md-progress-bar mode="indeterminate" >
-            </md-progress-bar>
-        </md-card-footer>
+  <md-card-header>
+  <div md-card-avatar>
+    <md-icon>person</md-icon>
+  </div>
+  </md-card-header>
+  <md-card-footer>
+    <md-progress-bar mode="indeterminate" >
+    </md-progress-bar>
+  </md-card-footer>
 </md-card>
 
 <md-tab-group>
-    <md-tab label="Answers">
-<div *ngFor="let answer of otherUser">
-<md-card >
+  <md-tab label="Answers">
+    <div *ngFor="let answer of otherUser">
+      <md-card >
         <md-card-header>
         <div md-card-avatar>
-            <md-icon>person</md-icon>
+          <md-icon>person</md-icon>
         </div>
         <md-card-title>{{answer.answeredByName}}</md-card-title>
         <md-card-subtitle>{{answer.date | date}}</md-card-subtitle>
-            <md-chip-list>
-                <md-chip>Education</md-chip>
-            </md-chip-list>
+          <md-chip-list>
+            <md-chip>Education</md-chip>
+          </md-chip-list>
         </md-card-header>
         <md-card-content>
           <h3 (click)=onSelect(answer.questionId) style="cursor: pointer">
             {{answer.question}}
           </h3>
-            <p style="white-space: pre-wrap;">
-                {{answer.answer}}
-            </p>
+          <p style="white-space: pre-wrap;">
+              {{answer.answer}}
+          </p>
         </md-card-content>
         <md-card-actions align="center">
-            <div > 
-                <button md-button 
-                    color="primary" 
-                    (click)=agree(answer.answerId)>
-                    {{answer.noOfAgree}} 
-                    Agree
-                </button>
-                <button md-button 
-                    color="warn" 
-                    (click)=disagree(answer.answerId)>
-                    {{answer.noOfDisagree}} 
-                    Disagree
-                </button>
-                <button md-button 
+          <div > 
+            <button md-button 
+                color="primary" 
+                (click)=agree(answer.answerId)>
+                {{answer.noOfAgree}} 
+                Agree
+            </button>
+            <button md-button 
+                color="warn" 
+                (click)=disagree(answer.answerId)>
+                {{answer.noOfDisagree}} 
+                Disagree
+            </button>
+            <button md-button 
                 color="primary" 
                 (click)="onSelectComment(answer.answerId)">
                 Comments
-              </button>
-            </div>
+            </button>
+          </div>
         </md-card-actions>
-</md-card>
-<br />
-</div>
-    </md-tab>
-
-    <md-tab label="Questions">
-<br />
-<br />
-<div *ngFor="let question of questions">
-    <md-card >             
-      <md-card-header>
-        <div md-card-avatar>
-            <md-icon>person</md-icon>
-        </div>
-        <md-card-title >{{question.ownerName}}</md-card-title>
-        <md-card-subtitle>{{question.creationDate | date}}</md-card-subtitle>
-            <md-chip-list>
-                <md-chip>Education</md-chip>
-            </md-chip-list>
-      </md-card-header>
-      <md-card-content>
-      <h3 (click)=onSelect(question.questionId) style="cursor: pointer">
-          {{question.question}}
-      </h3>
-      </md-card-content>
-    </md-card>
-    <br /> 
-</div>
-
-    </md-tab>
-    <md-tab label="About">
-            <br />
-            <div >
-              <div fxLayout="row">
-                <div fxFlex="100">
-                  <md-card style="width: 90%">             
-                    <md-card-header>
-                      <md-card-title >{{userDetails.name}}</md-card-title>
-                      <md-card-subtitle>{{userDetails.branch}}</md-card-subtitle>
-                    </md-card-header>
-                  </md-card>
-                </div>
-              </div>
-            
-            
-              <div fxLayout="row" >
-                <div fxFlex="50">
-                  <md-card style="width: 90%">
-                    <md-card-content>
-                      <b>Basic Info</b>
-                    </md-card-content>
-                  </md-card>
-                  <md-card style="width: 90%">
-                    <md-card-header>
-                      <md-card-title >Date of birth</md-card-title>
-                      <md-card-subtitle>{{userDetails.dob}}</md-card-subtitle>
-                    </md-card-header>
-            
-                    <md-card-header>
-                      <md-card-title >Gender</md-card-title>
-                      <md-card-subtitle>{{userDetails.gender}}</md-card-subtitle>
-                    </md-card-header>
-                  </md-card>
-                </div>
-            
-                <div fxFlex="50">  
-                  <md-card style="width: 80%">
-                    <md-card-content>
-                      <b>Academic</b>
-                    </md-card-content>
-                  </md-card>
-            
-                  <md-card style="width: 80%">
-                    <md-card-header>
-                      <md-card-title >Admission Year</md-card-title>
-                      <md-card-subtitle>{{userDetails.admissionYear}}</md-card-subtitle>
-                    </md-card-header>
-            
-                    <md-card-header>
-                      <md-card-title >Seciton</md-card-title>
-                      <md-card-subtitle>{{userDetails.sec}}</md-card-subtitle>
-                    </md-card-header>
-                  </md-card>
-                </div>
-              </div>
-            
-              <div fxLayout="row">
-                <div fxFlex="100">
-                  <md-card style="width: 90%">
-                    <md-card-content>
-                      <b>Contacts</b>
-                    </md-card-content>
-                  </md-card>
-            
-                  <md-card style="width: 90%">
-                    <md-card-header>
-                      <md-card-title >Email-Id</md-card-title>
-                      <md-card-subtitle>{{userDetails.emailId}}</md-card-subtitle>
-                    </md-card-header>
-            
-                    <md-card-header>
-                      <md-card-title >City</md-card-title>
-                      <md-card-subtitle>{{userDetails.city}}</md-card-subtitle>
-                    </md-card-header>
-            
-                    <md-card-header>
-                      <md-card-title >State</md-card-title>
-                      <md-card-subtitle>{{userDetails.state}}</md-card-subtitle>
-                    </md-card-header>
-                  </md-card>
-                </div>
-              </div>
-            
-              <br /> 
-            
-            </div>
-    </md-tab>
+      </md-card>
+      <br />
+    </div>
+    <div>
+      <md-card *ngIf="!otherUser.length && dataLoaded">
+        <md-card-header>No more data</md-card-header>
+      </md-card>
+    </div>
+      
     <div>
       <button 
         md-button 
@@ -190,3 +82,116 @@
         Next Page
       </button>
     </div>
+  </md-tab>
+  <md-tab label="Questions">
+    <br />
+    <br />
+    <div *ngFor="let question of questions">
+      <md-card >             
+        <md-card-header>
+          <div md-card-avatar>
+            <md-icon>person</md-icon>
+          </div>
+          <md-card-title >{{question.ownerName}}</md-card-title>
+          <md-card-subtitle>{{question.creationDate | date}}</md-card-subtitle>
+            <md-chip-list>
+              <md-chip>Education</md-chip>
+            </md-chip-list>
+        </md-card-header>
+        <md-card-content>
+          <h3 (click)=onSelect(question.questionId) style="cursor: pointer">
+              {{question.question}}
+          </h3>
+        </md-card-content>
+      </md-card>
+      <br /> 
+    </div>
+  </md-tab>
+  <md-tab label="About">
+    <br />
+    <div >
+      <div fxLayout="row">
+        <div fxFlex="100">
+          <md-card style="width: 90%">             
+            <md-card-header>
+              <md-card-title >{{userDetails.name}}</md-card-title>
+              <md-card-subtitle>{{userDetails.branch}}</md-card-subtitle>
+            </md-card-header>
+          </md-card>
+        </div>
+      </div>
+      
+      
+      <div fxLayout="row" >
+        <div fxFlex="50">
+          <md-card style="width: 90%">
+            <md-card-content>
+              <b>Basic Info</b>
+            </md-card-content>
+          </md-card>
+          <md-card style="width: 90%">
+            <md-card-header>
+              <md-card-title >Date of birth</md-card-title>
+              <md-card-subtitle>{{userDetails.dob}}</md-card-subtitle>
+            </md-card-header>
+      
+            <md-card-header>
+              <md-card-title >Gender</md-card-title>
+              <md-card-subtitle>{{userDetails.gender}}</md-card-subtitle>
+            </md-card-header>
+          </md-card>
+        </div>
+      
+        <div fxFlex="50">  
+          <md-card style="width: 80%">
+            <md-card-content>
+              <b>Academic</b>
+            </md-card-content>
+          </md-card>
+    
+          <md-card style="width: 80%">
+            <md-card-header>
+              <md-card-title >Admission Year</md-card-title>
+              <md-card-subtitle>{{userDetails.admissionYear}}</md-card-subtitle>
+            </md-card-header>
+    
+            <md-card-header>
+              <md-card-title >Seciton</md-card-title>
+              <md-card-subtitle>{{userDetails.sec}}</md-card-subtitle>
+            </md-card-header>
+          </md-card>
+        </div>
+      </div>
+      
+      <div fxLayout="row">
+        <div fxFlex="100">
+          <md-card style="width: 90%">
+            <md-card-content>
+              <b>Contacts</b>
+            </md-card-content>
+          </md-card>
+    
+          <md-card style="width: 90%">
+            <md-card-header>
+              <md-card-title >Email-Id</md-card-title>
+              <md-card-subtitle>{{userDetails.emailId}}</md-card-subtitle>
+            </md-card-header>
+    
+            <md-card-header>
+              <md-card-title >City</md-card-title>
+              <md-card-subtitle>{{userDetails.city}}</md-card-subtitle>
+            </md-card-header>
+    
+            <md-card-header>
+              <md-card-title >State</md-card-title>
+              <md-card-subtitle>{{userDetails.state}}</md-card-subtitle>
+            </md-card-header>
+          </md-card>
+        </div>
+      </div>
+      <br /> 
+    </div>
+  </md-tab>
+</md-tab-group>
+
+

@@ -1,6 +1,11 @@
+<br />
+<br />
 
-<br />
-<br />
+<div>
+  <md-toolbar color="" class="mat-elevation-z6">
+      <span>Use college details</span>
+  </md-toolbar>
+</div>
 <div>
 <md-card>
   <form #registerUser="ngForm"  (ngSubmit)="submitNewUser();">
@@ -12,7 +17,8 @@
                     placeholder="Reg. No." 
                     name="reg_no"
                     [(ngModel)]="register.username"
-                    required>
+                    required
+                    >
           </md-input-container>
         </div>
 
@@ -23,30 +29,39 @@
                     name="password" 
                     type="password"
                     [(ngModel)]="register.password"
-                    required>
-          </md-input-container>
-        </div>
-
-        <div>
-          <md-input-container >
-            <input  mdInput 
-                    placeholder="Confirm Password" 
-                    name="confirm_password" 
-                    type="password"
-                    required>
+                    required
+                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+            >
           </md-input-container>
         </div>
       </div>
     </div>
+    <div  fxLayout="row">
+      <div *ngIf="invalid" 
+            fxFlex="100"
+            class="invalid-block" 
+            align="center" >
+            {{error}}
+      </div>
+    </div>
     <div fxLayout="row" >
-      <button md-raised-button color="primary" type="submit" name="submit" fxFlex="100"> 
-        Register
+      <button md-raised-button 
+              color="primary" 
+              type="submit" 
+              name="submit" 
+              fxFlex="100"> 
+              Register
       </button>
     </div>
   </form>
   <div fxLayout="row" >
-  <button md-button type="submit" name="login" (click)="loginPage();" color="primary" fxFlex="100">
-      Login
+    <button md-button 
+            type="submit" 
+            name="login" 
+            (click)="loginPage();" 
+            color="primary" 
+            fxFlex="100">
+            Login
     </button>
   </div>
 </md-card>

@@ -16,7 +16,8 @@ export class RegisterComponent implements OnInit {
             password: ""};
   userId={};
   status={};
-
+  invalid=false;
+  error="";
   ngOnInit() {
     if(window.localStorage.getItem('userId')) { 
       this.logout();
@@ -36,8 +37,17 @@ export class RegisterComponent implements OnInit {
   submitNewUser() {
     this._appService.addNewUser(this.register)
     .subscribe(resAppData => {
-      if(resAppData.status=="success") {
+      if(resAppData.status=="Success") {
         this.router.navigateByUrl("/login");
-    }}); 
+      } 
+      else if(resAppData.status=="Duplicate"){
+        this.invalid=true;
+        this.error="Aleary registered";
+      }
+      else {
+        this.invalid=true;
+        this.error="Failed to register";
+      }
+    }); 
   }
 }

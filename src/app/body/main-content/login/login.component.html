@@ -1,9 +1,13 @@
 <br />
 <br />
-
+<div>
+  <md-toolbar color="" class="mat-elevation-z6">
+      <span>LogIn</span>
+  </md-toolbar>
+</div>
 <div >
 <md-card >
-    <form #login="ngForm" (ngSubmit)="loginPage();">
+    <form #login="ngForm"  (ngSubmit)="loginPage();">
         <div fxLayout="row" >
           <div fxFlex="100">
 
@@ -12,8 +16,11 @@
                 <input mdInput 
                       placeholder="Username" 
                       [(ngModel)]="data.username" 
-                      name="username" required>
-              </md-input-container>
+                      name="username" 
+                      class="form-control"
+                      minlength="10"
+                      required>
+              </md-input-container>                
             </div>
 
             <div>
@@ -22,15 +29,25 @@
                       placeholder="Password" 
                       type ="password" 
                       [(ngModel)]="data.password" 
-                      name="password" required>
+                      name="password" 
+                      required>
               </md-input-container>
+            </div>
+
+            <div  fxLayout="row">
+              <div *ngIf="invalid" 
+                    fxFlex="100"
+                    class="invalid-block" 
+                    align="center" >
+                    Failed to login
+              </div>
             </div>
 
           </div>
         </div>
           <div>
             <button md-raised-button type="submit" name="submit" color="primary" fxFlex="100">
-              Login
+              LogIn
             </button>
           </div>
     </form>
@@ -39,5 +56,11 @@
         Register
       </button>
     </div>
+
+    <md-card-footer>
+        <md-progress-bar mode="indeterminate" 
+                         *ngIf="loading">
+        </md-progress-bar>
+      </md-card-footer>
 </md-card>
 </div>

@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   data={username:"",
   password:""}
   error="";
+  invalid=false;
   userId={};
   loading = false;
   status={};  
@@ -23,7 +24,6 @@ export class LoginComponent implements OnInit {
     if(window.localStorage.getItem('userId')) { 
       this.util.logout();
     }
-    this.clearfields();
   }
 
 
@@ -34,18 +34,22 @@ export class LoginComponent implements OnInit {
   loginPage() {
     this.loading=true;
     this._appService.login(this.data).subscribe((res) => {
-      console.log
+      console.log(res);
         if(res.status=="200") {
           this.util.getUserId()
           window.localStorage.setItem("userId", this.util.userId.toString());
           this.router.navigateByUrl("/home");
         }
-        else {
-          this.clearfields();
-          this.loading=false;
-          this.error="Failed to login";
-        }
-    })
+    });
+    this.logingFailed();
+  }
+
+  logingFailed() {
+    if(this.data["status"]!="200")  {
+      this.loading=false;
+      this.error="Failed to login";
+      this.invalid=true;
+    }
   }
 
   clearfields() {
