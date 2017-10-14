@@ -19,7 +19,7 @@ import { RegisterComponent } from './body/main-content/register/register.compone
 import { QuestionsComponent } from './body/main-content/profile/questions/questions.component';
 import { AboutComponent } from './body/main-content/profile/about/about.component';
 import { SettingsComponent } from './header/settings/settings.component';
-
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent, AppInternalComponents, RoutingInternalComponents, HomeComponent, 
@@ -33,7 +33,7 @@ import { SettingsComponent } from './header/settings/settings.component';
     BrowserAnimationsModule, FlexLayoutModule, ReactiveFormsModule
   ],
 
-  providers: [ {provide: XSRFStrategy, useFactory: xsrfFactory}],
+  providers: [ {provide: XSRFStrategy, useFactory: xsrfFactory}, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
