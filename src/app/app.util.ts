@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { AppService } from './app.service';
 import { Router } from '@angular/router';
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
+  selector: 'app-utils',
+  templateUrl: './app.util.html',
   styleUrls: ['./app.component.css'],
   providers: [AppService]
 })

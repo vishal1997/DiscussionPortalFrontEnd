@@ -17,7 +17,16 @@ export class OtherProfileComponent implements OnInit {
   questions=[];
   userId={};
   pageno:number;
-  userDetails={};
+  userDetails={name:"",
+                  branch:"",
+                  dob:"",
+                  gender:"",
+                  admissionYear:"",
+                  sec:"",
+                  emailId:"",
+                  city:"",
+                  state:""
+                };
    ngOnInit() {
     this.pageno=0;
     this.userId = this._route.snapshot.params['id']; 

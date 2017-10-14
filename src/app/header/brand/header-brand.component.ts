@@ -20,6 +20,9 @@ export class HeaderBrandComponent {
   profile() {
     this.router.navigateByUrl("/profile")
   }
+  getNameIdPair() {
+    this.util.nameIdPair.name
+  }
 }
 
 

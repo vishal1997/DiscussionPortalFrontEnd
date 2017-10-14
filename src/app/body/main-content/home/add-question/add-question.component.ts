@@ -33,11 +33,11 @@ export class AddQuestionComponent implements OnInit {
       duration: 2000,
     });
 
-    this.question = {};
+    this.question = {question:""};
   }
 
 
-  question = {};
+  question = {question:""};
   addQuestionProgress = false;
   ngOnInit() {
     

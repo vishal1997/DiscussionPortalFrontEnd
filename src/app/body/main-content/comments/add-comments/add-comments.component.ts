@@ -20,7 +20,7 @@ export class CommentsComponent implements OnInit {
 
   }
 
-  comment = {};
+  comment = "";
   submitNewComment() {
     this.addCommentProgress = true;
     let answerId = this._route.snapshot.params['id'];
@@ -36,7 +36,7 @@ export class CommentsComponent implements OnInit {
       duration: 2000,
     });
 
-    this.comment = {};
+    this.comment = "";
   }
 
   addCommentProgress = false;

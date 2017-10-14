@@ -15,4 +15,7 @@ export class HeaderMenuComponent {
   settings() {
     this.router.navigateByUrl("/settings");
   }
+  logout() {
+    this.util.logout();
+  }
 }

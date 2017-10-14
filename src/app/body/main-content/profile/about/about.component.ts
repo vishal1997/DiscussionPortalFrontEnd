@@ -10,7 +10,16 @@ export class AboutComponent implements OnInit {
 
   constructor(private util:UtilComponent, private _appService:AppService) { }
 
-  userDetails={}
+  userDetails={name:"",
+                  gender:"",
+                  dob:"",
+                  branch:"",
+                  sec:"",
+                  admissionYear:"",
+                  emailId:"",
+                  city:"",
+                  state:""
+                }
   ngOnInit() {
     this.getUserProfileDetails();
   }

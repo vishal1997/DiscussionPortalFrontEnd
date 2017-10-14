@@ -14,7 +14,21 @@ export class AnswerComponent implements OnInit {
 
   constructor(private _appService:AppService, private _route:ActivatedRoute, private util:UtilComponent, private router:Router) { }
 
-  answer = {answerId:""};
+  answer = {answerId:"", 
+            questionId:"", 
+            sec:"", 
+            answer:"", 
+            question:"", 
+            date:"", 
+            answeredBy:"", 
+            answeredByName:"", 
+            commentId:{},
+            noOfComment:"",
+            noOfAgree:"",
+            noOfDisagree:"",
+            agree:{},
+            disagree:{}
+          };
   userAgree=false;
   userDisagree=false;
   color:String;
