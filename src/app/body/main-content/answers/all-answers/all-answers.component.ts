@@ -27,13 +27,14 @@ export class AllAnswersComponent implements OnInit {
     answer='';
     showTextArea = false;
     addAnswerProgress = false;
-
+    questionId=""
     ngOnInit() {
         this.getAnswers()
     }
 
     getAnswers() {
         let questionId = this._route.snapshot.params['id'];
+        this.questionId = questionId;
         this._appService.getQuestionDetails(questionId)
                         .subscribe(resAppData => this.app = resAppData);
     }
@@ -53,7 +54,7 @@ export class AllAnswersComponent implements OnInit {
     onSubmitAnswer() {
         this.addAnswerProgress = true;
         console.log(this.answer);
-        this._appService.addAnswer(this.answer, this.app[0].questionId)
+        this._appService.addAnswer(this.answer, this.questionId)
         .subscribe(resSubmit => this.openSnackBar(resSubmit.status, "Done"));
     }
 
