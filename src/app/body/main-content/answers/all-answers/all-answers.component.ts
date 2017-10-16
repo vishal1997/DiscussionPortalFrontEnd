@@ -14,7 +14,7 @@ export class AllAnswersComponent implements OnInit {
 
     constructor(private _appService:AppService, private _route:ActivatedRoute, public snackBar: MdSnackBar, 
                 private router:Router){}
-    app = {questionId:"",
+    app = [{questionId:"",
             ownerName:"", 
             question:"", 
             owner:"", 
@@ -22,7 +22,7 @@ export class AllAnswersComponent implements OnInit {
             creationDate:"", 
             tags:"", 
             year:"",
-            };
+            }];
     res = {};
     answer='';
     showTextArea = false;
@@ -53,7 +53,7 @@ export class AllAnswersComponent implements OnInit {
     onSubmitAnswer() {
         this.addAnswerProgress = true;
         console.log(this.answer);
-        this._appService.addAnswer(this.answer, this.app.questionId)
+        this._appService.addAnswer(this.answer, this.app[0].questionId)
         .subscribe(resSubmit => this.openSnackBar(resSubmit.status, "Done"));
     }
 
