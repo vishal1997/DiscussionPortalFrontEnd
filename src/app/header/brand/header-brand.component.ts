@@ -14,15 +14,18 @@ export class HeaderBrandComponent {
 
   search="";
   ngOnInit() {
-    this.util.getNameIdPair();
+    this.getNameIdPair();
   }
   
   profile() {
     this.router.navigateByUrl("/profile")
   }
   getNameIdPair() {
-    this.util.nameIdPair.name
-  }
+    this._appService.getNameIdPair() 
+    .subscribe((resAppData) => {this.nameIdPair=resAppData})
+}
+
+
 }
 
 

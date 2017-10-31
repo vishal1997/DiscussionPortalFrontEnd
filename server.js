@@ -9,5 +9,5 @@ app.use('/userlogoutpage', proxy({target:'http://localhost:8080', changeOrigin:t
 app.use('/userloginpage', proxy({target:'http://localhost:8080', changeOrigin: true}));
 // Start the app by listening on the default
 // Heroku port
-app.listen(process.env.PORT || 3410);
+app.listen(3410);
 //ng serve --port process.env.PORT --proxy-config proxy.config.json || 3410 --proxy-config proxy.config.json
