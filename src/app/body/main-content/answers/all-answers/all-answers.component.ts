@@ -14,15 +14,15 @@ export class AllAnswersComponent implements OnInit {
 
     constructor(private _appService:AppService, private _route:ActivatedRoute, public snackBar: MdSnackBar, 
                 private router:Router){}
-    app = [{questionId:"",
+    app = {questionId:"",
             ownerName:"", 
             question:"", 
             owner:"", 
-            answerResponse:{}, 
+            answerResponse:[], 
             creationDate:"", 
             tags:"", 
             year:"",
-            }];
+            };
     res = {};
     answer='';
     showTextArea = false;
