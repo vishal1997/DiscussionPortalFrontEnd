@@ -41,15 +41,12 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl("/home");
         }
     });
-    this.logingFailed();
   }
 
   logingFailed() {
-    if(this.data["status"]!="200")  {
       this.loading=false;
       this.error="Failed to login";
       this.invalid=true;
-    }
   }
 
   clearfields() {

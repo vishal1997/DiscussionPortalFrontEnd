@@ -50,8 +50,18 @@
             </md-card-content>
             <md-card-actions align="center">
             <div > 
-                <button md-button color="primary" (click)=agree(answer.answerId)>{{answer.noOfAgree}} Agree</button>
-                <button md-button color="warn" (click)=disagree(answer.answerId)>{{answer.noOfDisagree}} Disagree</button>
+                <button md-button 
+                        color="primary" 
+                        (click)=agree(answer.answerId)>
+                        {{answer.noOfAgree}} Agree
+                </button>
+
+                <button md-button 
+                        color="warn" 
+                        (click)=disagree(answer.answerId)>
+                        {{answer.noOfDisagree}} Disagree
+                </button>
+                
                 <button md-button 
                     color="primary" 
                     (click)="onSelectComment(answer.answerId)">
@@ -75,7 +85,7 @@
         <div>
             <button 
                 md-button 
-                color="basic"
+                color="primary"
                 *ngIf="dataLoaded && pageno!=0"
                 (click)="onClickPrevious();">
                 Previous Page
@@ -83,7 +93,7 @@
             <span fxFlex></span>
             <button 
                 md-button 
-                color="basic"
+                color="primary"
                 *ngIf="dataLoaded && user.length"
                 (click)="onClickNext();">
                 Next Page

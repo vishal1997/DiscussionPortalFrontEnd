@@ -39,13 +39,13 @@
       <div> 
           
         <button md-button 
-          color="{{ (getAgreeStatus(answer.agree)) ? 'primary' : '#e7e7e7' }}" 
+          color="primary" 
           (click)=agree(answer.answerId)> 
           {{answer.noOfAgree}} Agree
         </button>
 
         <button md-button mode="indeterminate" 
-          color="{{ (getDisagreeStatus(answer.disagree)) ?  'warn': '#e7e7e7' }}"  
+          color="warn"  
           (click)=disagree(answer.answerId)>{{answer.noOfDisagree}} Disagree
         </button>
 
@@ -68,7 +68,7 @@
 <div>
   <button 
     md-button 
-    color="basic"
+    color="primary"
     *ngIf="dataLoaded && pageno!=0"
     (click)="onClickPrevious();">
     Previous Page
@@ -76,7 +76,7 @@
   <span fxFlex></span>
   <button 
     md-button 
-    color="basic"
+    color="primary"
     *ngIf="dataLoaded && data.length"
     (click)="onClickNext();">
     Next Page

@@ -72,7 +72,7 @@
         <md-card-title (click)=onSelectUserId(answer.userId) style="cursor: pointer">{{answer.name}}</md-card-title>
         <md-card-subtitle>{{answer.date | date}}</md-card-subtitle>
             <md-chip-list>
-                <md-chip>{{answer.sec}}</md-chip>
+                <md-chip>Education</md-chip>
             </md-chip-list>
             <span fxFlex></span>
             <button md-icon-button (click)=onSelect(answer.answerId)>
@@ -85,8 +85,8 @@
             </p>
         </md-card-content>
         <md-card-actions align="center">
-            <button md-button color="primary">{{answer.noOfAgree}} Agree</button>
-            <button md-button color="warn">{{answer.noOfDisagree}} Disagree</button>
+            <button md-button color="primary" (click)=agree(answer.answerId) >{{answer.noOfAgree}} Agree</button>
+            <button md-button color="warn" (click)=disagree(answer.answerId)>{{answer.noOfDisagree}} Disagree</button>
             <button md-button 
                 color="primary" 
                 (click)="onSelect(answer.answerId)">

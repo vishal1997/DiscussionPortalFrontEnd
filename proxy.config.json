@@ -1,18 +1,18 @@
 {
     "/api/*":{
-        "target":"http://localhost:8080",
+        "target":"http://18.221.165.186:8080",
         "secure":false,
         "logLevel":"debug"
     },
 
     "/userloginpage":{
-        "target":"http://localhost:8080",
+        "target":"http://18.221.165.186:8080",
         "secure":false,
         "logLevel":"debug"
     },
 
     "/userlogoutpage":{
-        "target":"http://localhost:8080",
+        "target":"http://18.221.165.186:8080",
         "secure":false,
         "logLevel":"debug"
     }

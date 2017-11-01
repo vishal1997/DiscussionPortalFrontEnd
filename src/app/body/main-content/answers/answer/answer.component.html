@@ -13,7 +13,7 @@
         <md-card-title (click)=onSelectUserId(answer.answeredBy) style="cursor: pointer">{{answer.answeredByName}}</md-card-title>
         <md-card-subtitle>{{answer.date | date}}</md-card-subtitle>
             <md-chip-list>
-                <md-chip>{{answer.sec}}</md-chip>
+                <md-chip>Education</md-chip>
             </md-chip-list>
         </md-card-header>
         <md-card-content>
@@ -23,16 +23,15 @@
         </md-card-content>
         <md-card-actions align="center">
             <button md-button 
-            color="{{ (getAgreeStatus(answer.agree)) ? 'primary' : '#e7e7e7' }}" 
+            color="primary" 
             (click)=agree(answer.answerId)> 
             {{answer.noOfAgree}} Agree
           </button>
   
           <button md-button 
-            color="{{ (getDisagreeStatus(answer.disagree)) ?  'warn': '#e7e7e7' }}"  
+            color="warn"  
             (click)=disagree(answer.answerId)>{{answer.noOfDisagree}} Disagree
           </button>
-          
         </md-card-actions>
     </md-card>
         <app-add-comments></app-add-comments>

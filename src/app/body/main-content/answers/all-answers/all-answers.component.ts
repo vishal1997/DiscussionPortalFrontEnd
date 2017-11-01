@@ -2,18 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppService } from '../../../../app.service';
 import { MdSnackBar } from '@angular/material';
-
+import { UtilComponent } from '../../../../app.util';
 
 @Component({
     selector: 'all-answers',
     templateUrl: './all-answers.component.html',
-    providers:[AppService],
+    providers:[AppService, UtilComponent],
     host:{'style':'width:100%'}
 })
 export class AllAnswersComponent implements OnInit {
 
     constructor(private _appService:AppService, private _route:ActivatedRoute, public snackBar: MdSnackBar, 
-                private router:Router){}
+                private router:Router,  private util:UtilComponent){}
     app = {questionId:"",
             ownerName:"", 
             question:"", 
@@ -28,6 +28,9 @@ export class AllAnswersComponent implements OnInit {
     showTextArea = false;
     addAnswerProgress = false;
     questionId=""
+
+    userAgree= false;
+    userDisagree=false;
     ngOnInit() {
         this.getAnswers()
     }
@@ -38,6 +41,22 @@ export class AllAnswersComponent implements OnInit {
         this._appService.getQuestionDetails(questionId)
                         .subscribe(resAppData => this.app = resAppData);
     }
+
+    agree(answerId) {
+        if(this.userAgree)
+          this.userAgree=false;
+        else
+          this.userAgree=true;
+        this.util.agree(answerId); 
+      }
+    
+      disagree(answerId) {
+        if(this.userAgree)
+          this.userDisagree=false;
+        else
+          this.userDisagree=true;
+        this.util.disagree(answerId);
+      }
 
     onSelect(id) {
         this.router.navigate(['/answer', id]);
