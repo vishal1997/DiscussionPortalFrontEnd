@@ -12,7 +12,7 @@ export class HeaderSearchComponent {
 
   search="";
   searchUser() {
-    this.router.navigateByUrl('/user/'+this.search);
+    this.router.navigateByUrl('/search/'+this.search);
     location.reload();
   }
 }

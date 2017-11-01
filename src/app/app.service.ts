@@ -148,4 +148,9 @@ export class AppService {
         return this._http.put("/api/v1/allquestions/", pageNo)
         .map((response:Response) => response.json());
     }
+
+    getUsers(name) {
+        return this._http.get("/api/v1/search/"+ name)
+        .map((response:Response) => response.json());
+    }
 }

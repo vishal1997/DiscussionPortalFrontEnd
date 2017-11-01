@@ -22,12 +22,13 @@ import { SettingsComponent } from './header/settings/settings.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ContactComponent } from './header/contact/contact.component';
 import { AllquestionsComponent } from './body/main-content/allquestions/allquestions.component';
+import { SearchuserComponent } from './body/main-content/searchuser/searchuser.component';
 @NgModule({
   declarations: [
     AppComponent, AppInternalComponents, RoutingInternalComponents, HomeComponent, 
     AddQuestionComponent, AnswerComponent, ProfileComponent, ProfileComponent, 
     UtilComponent, CommentsComponent, AllCommentsComponent, LoginComponent, RegisterComponent, 
-    QuestionsComponent, AboutComponent, SettingsComponent, ContactComponent, AllquestionsComponent
+    QuestionsComponent, AboutComponent, SettingsComponent, ContactComponent, AllquestionsComponent, SearchuserComponent
   ],
   
   imports: [

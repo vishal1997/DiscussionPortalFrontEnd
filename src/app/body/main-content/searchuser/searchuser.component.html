@@ -1,0 +1,31 @@
+<br />
+<br />
+
+<div >
+    <md-card >             
+      <md-card-header>
+        <md-card-title >
+          <p>Showing result for {{search}}</p>
+          
+        </md-card-title>
+      </md-card-header>
+    </md-card>
+    <br /> 
+</div>
+
+<div *ngFor="let user of users">
+    <md-card >             
+      <md-card-header>
+        <div md-card-avatar>
+            <md-icon>person</md-icon>
+        </div>
+        <md-card-title (click) = onSelectUser(user.username) style="cursor: pointer">
+          {{user.name}}
+        </md-card-title>
+        <md-card-subtitle>{{user.branch}}</md-card-subtitle>
+        <md-card-subtitle>{{user.sec}}</md-card-subtitle>
+        <md-card-subtitle>Year &nbsp; {{user.admissionYear}}</md-card-subtitle>
+      </md-card-header>
+    </md-card>
+    <br /> 
+</div>
