@@ -15,15 +15,18 @@ export class HomeComponent implements OnInit {
   constructor(private _appService:AppService, private router:Router, private util:UtilComponent) { }
   data = [];
   res =[];
-  userId={};
+  userId="";
   userAgree=false;
   userDisagree=false;
   pageno:number;
+  mapAgree = new Map<string, boolean>();
+  mapDisagree = new Map<string, boolean>();
+
   ngOnInit() {
     this.pageno=0;
     this.getFeeds();
   }
-
+  
   getFeeds() {
     this._appService.getFeeds(this.pageno)
     .subscribe(resAppData => this.updateUserData(resAppData));
@@ -33,7 +36,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/answer', id]);
   }
   getDisagreeStatus(disagreeList) {
-    this.userId = this.util.userId;
+    this.userId = this.util.nameIdPair.user_id;
     if(disagreeList) {
       for(let ele of disagreeList) {
         if(ele==this.userId) {  
@@ -47,7 +50,8 @@ export class HomeComponent implements OnInit {
   }
 
   getAgreeStatus(agreeList) {
-    this.userId = this.util.userId;
+    this.userId = this.util.nameIdPair.user_id;
+    console.log(this.userId);
     if(agreeList) {
       for(let ele of agreeList) {
         if(ele == this.userId) {

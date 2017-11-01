@@ -18,4 +18,7 @@ export class HeaderMenuComponent {
   logout() {
     this.util.logout();
   }
+  contact(){
+    this.router.navigateByUrl("/contact");
+  }
 }

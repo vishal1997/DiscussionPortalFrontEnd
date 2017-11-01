@@ -20,12 +20,13 @@ import { QuestionsComponent } from './body/main-content/profile/questions/questi
 import { AboutComponent } from './body/main-content/profile/about/about.component';
 import { SettingsComponent } from './header/settings/settings.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { ContactComponent } from './header/contact/contact.component';
 @NgModule({
   declarations: [
     AppComponent, AppInternalComponents, RoutingInternalComponents, HomeComponent, 
     AddQuestionComponent, AnswerComponent, ProfileComponent, ProfileComponent, 
     UtilComponent, CommentsComponent, AllCommentsComponent, LoginComponent, RegisterComponent, 
-    QuestionsComponent, AboutComponent, SettingsComponent
+    QuestionsComponent, AboutComponent, SettingsComponent, ContactComponent
   ],
   
   imports: [

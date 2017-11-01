@@ -13,6 +13,7 @@ import { AuthGuard } from '../auth/AuthGuard';
 import { QuestionsComponent } from '../body/main-content/profile/questions/questions.component';
 import { AboutComponent } from '../body/main-content/profile/about/about.component';
 import { SettingsComponent } from '../header/settings/settings.component';
+import { ContactComponent } from '../header/contact/contact.component';
 const routes:Routes = [
     {path:"question/:id", component: AllAnswersComponent, canActivate: [AuthGuard] },
     {path:"home", component: HomeComponent, canActivate: [AuthGuard] },
@@ -23,7 +24,8 @@ const routes:Routes = [
     {path:"login", component: LoginComponent},
     {path:"register", component: RegisterComponent},
     {path:"settings", component:SettingsComponent, canActivate:[AuthGuard]},
-    {path:"", component: LoginComponent}
+    {path:"", component: LoginComponent},
+    {path:"contact", component: ContactComponent, canActivate:[AuthGuard]}
 ]
 
 @NgModule({
