@@ -31,6 +31,7 @@ export class ProfileComponent implements OnInit {
   updateUserData(data) {
     this.user = data;
     this.dataLoaded = true;
+    window.scrollTo(0,0);
   }
   dataLoaded = false;
   onSelect(id) {

@@ -15,6 +15,10 @@ export class LeftPanelComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSelectQuestion() {
+    this.router.navigate(['/allquestions']);
+  }
+
   onSelectHome() {
     this.router.navigate(['/home']);
   }

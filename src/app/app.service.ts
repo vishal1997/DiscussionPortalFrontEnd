@@ -143,4 +143,9 @@ export class AppService {
         return this._http.put("/api/v1/resetemail/", email)
             .map((response:Response) => response.json());
     }
+
+    getAllQuestions(pageNo) {
+        return this._http.put("/api/v1/allquestions/", pageNo)
+        .map((response:Response) => response.json());
+    }
 }

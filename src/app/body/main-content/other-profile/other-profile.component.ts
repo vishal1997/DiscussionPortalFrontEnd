@@ -46,6 +46,7 @@ export class OtherProfileComponent implements OnInit {
   updateUserData(data) {
     this.otherUser = data;
     this.dataLoaded = true;
+    window.scrollTo(0,0);
   }
   dataLoaded = false;
   onSelect(id) {
