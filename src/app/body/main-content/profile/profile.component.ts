@@ -17,7 +17,10 @@ export class ProfileComponent implements OnInit {
     public snackBar: MdSnackBar) { }
   user = [];
   userDetails={};
-  pageno:number
+  mapAgree = new Map<string, boolean>();
+  mapDisagree = new Map<string, boolean>();
+  pageno:number;
+  pageno2:number;
   ngOnInit() {
     this.pageno=0;
     this.getUserDetails();
@@ -31,7 +34,10 @@ export class ProfileComponent implements OnInit {
   updateUserData(data) {
     this.user = data;
     this.dataLoaded = true;
-    window.scrollTo(0,0);
+    if(this.pageno!=this.pageno2) {
+      this.pageno2=this.pageno;
+      window.scrollTo(0,0);
+    }
   }
   dataLoaded = false;
   onSelect(id) {
@@ -47,12 +53,26 @@ export class ProfileComponent implements OnInit {
   }
 
 
+
   agree(answerId) {
-    this.util.agree(answerId); 
+    this._appService.agreeDisagree(answerId, "agree")
+    .subscribe(resAppData => this.update(resAppData));
   }
-  
+
+  update(data) {
+    this.getUserDetails();
+  }
+
   disagree(answerId) {
-    this.util.disagree(answerId);
+    this._appService.agreeDisagree(answerId, "disagree")
+    .subscribe(resAppData => this.update(resAppData));
+  }
+
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 1000,
+    });
   }
 
   deleteAnswer(answerId) {
@@ -60,12 +80,6 @@ export class ProfileComponent implements OnInit {
     .subscribe(resApp => this.openSnackBar("Delete", resApp.status ));
   }
 
-  openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 2000,
-    });
-    this.getUserDetails();
-  }
   onClickNext() {
     this.pageno++;
     this.getUserDetails();

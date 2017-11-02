@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { AppService } from '../../../app.service';
 import { Router } from '@angular/router';
 import { UtilComponent } from '../../../app.util';
@@ -19,9 +19,7 @@ export class HomeComponent implements OnInit {
   userAgree=false;
   userDisagree=false;
   pageno:number;
-  mapAgree = new Map<string, boolean>();
-  mapDisagree = new Map<string, boolean>();
-
+  pageno2:number;
   ngOnInit() {
     this.pageno=0;
     this.getFeeds();
@@ -35,39 +33,14 @@ export class HomeComponent implements OnInit {
   onSelectComment(id) {
     this.router.navigate(['/answer', id]);
   }
-  getDisagreeStatus(disagreeList) {
-    this.userId = this.util.nameIdPair.user_id;
-    if(disagreeList) {
-      for(let ele of disagreeList) {
-        if(ele==this.userId) {  
-          this.userDisagree=true;
-          return true;
-        }
-      }
-    }
-    this.userDisagree=false;
-    return false;
-  }
-
-  getAgreeStatus(agreeList) {
-    this.userId = this.util.nameIdPair.user_id;
-    console.log(this.userId);
-    if(agreeList) {
-      for(let ele of agreeList) {
-        if(ele == this.userId) {
-          this.userAgree= true;
-          return true;
-        }
-      }
-    }
-    this.userAgree= false;
-    return false;
-  }
 
   updateUserData(data) {
     this.data = data;
     this.dataLoaded = true;
-    window.scrollTo(0,0);
+    if(this.pageno2 != this.pageno) {
+      this.pageno2=this.pageno;
+      window.scrollTo(0,0);
+    }
   }
 
   dataLoaded = false;
@@ -82,19 +55,17 @@ export class HomeComponent implements OnInit {
 
 
   agree(answerId) {
-    if(this.userAgree)
-      this.userAgree=false;
-    else
-      this.userAgree=true;
-    this.util.agree(answerId); 
+    this._appService.agreeDisagree(answerId, "agree")
+    .subscribe(resAppData => this.update(resAppData));
+  }
+
+  update(data) {
+    this.getFeeds()
   }
 
   disagree(answerId) {
-    if(this.userAgree)
-      this.userDisagree=false;
-    else
-      this.userDisagree=true;
-    this.util.disagree(answerId);
+    this._appService.agreeDisagree(answerId, "disagree")
+    .subscribe(resAppData => this.update(resAppData));
   }
 
   onClickNext() {
@@ -108,4 +79,5 @@ export class HomeComponent implements OnInit {
       this.getFeeds();
     }
   }
+
 }

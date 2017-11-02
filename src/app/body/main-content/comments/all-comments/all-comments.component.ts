@@ -19,19 +19,27 @@ export class AllCommentsComponent implements OnInit {
   res = {};
   ngOnInit() {
 
+    this.getComment();    
+  }
+
+  getComment() {
     let answerId = this._route.snapshot.params['id'];
     this._appService.getCommentDetails(answerId)
                     .subscribe(resAppData => this.comments = resAppData);
   }
-
   agreeComment(commentId) {
     this._appService.agreeComment(commentId, "agree")
-                    .subscribe(resAppData=>resAppData);
+                    .subscribe(resAppData => this.update(resAppData));
   }
 
   disagreeComment(commentId) {
     this._appService.disagreeComment(commentId,"disagree")
-                    .subscribe(resAppData => resAppData);
+                    .subscribe(resAppData => this.update(resAppData));
+    
+  }
+
+  update(resAppData) {
+    this.getComment();
   }
 
 }

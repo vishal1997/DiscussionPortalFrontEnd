@@ -12,7 +12,8 @@ import { UtilComponent } from '../../../../app.util';
 })
 export class AnswerComponent implements OnInit {
 
-  constructor(private _appService:AppService, private _route:ActivatedRoute, private util:UtilComponent, private router:Router) { }
+  constructor(private _appService:AppService, private _route:ActivatedRoute,
+     private util:UtilComponent, private router:Router) { }
 
   answer = {answerId:"", 
             questionId:"", 
@@ -34,6 +35,10 @@ export class AnswerComponent implements OnInit {
   color:String;
   userId = {};
   ngOnInit() {
+    this.getData();
+  }
+
+  getData() {
     let answerId = this._route.snapshot.params['id'];
     this._appService.getAnswerDetails(answerId)
     .subscribe(resAppData => this.answer = resAppData);
@@ -46,40 +51,18 @@ export class AnswerComponent implements OnInit {
   onSelectUserId(id) {
     this.router.navigate(["user", id]);
   }
-
   agree(answerId) {
-    this.util.agree(answerId); 
+    this._appService.agreeDisagree(answerId, "agree")
+    .subscribe(resAppData => this.update(resAppData));
+  }
+
+  update(data) {
+    this.answer = data;
+    this.getData();
   }
 
   disagree(answerId) {
-    this.util.disagree(answerId);
+    this._appService.agreeDisagree(answerId, "disagree")
+    .subscribe(resAppData => this.update(resAppData));
   }
-
-  getDisagreeStatus(disagreeList) {
-    if(disagreeList) {
-      for(let ele of disagreeList) {
-        if(ele==this.userId) {
-          this.userDisagree=true;
-          return true;
-        }
-      }
-    }
-    this.userDisagree=false;
-    return false;
-  }
-    
-  getAgreeStatus(agreeList) {
-    if(agreeList) {
-      for(let ele of agreeList) {
-        if(ele == this.userId) {
-          console.log(ele,this.userId);
-          this.userAgree= true;
-          return true;
-        }
-      }
-    }
-    this.userAgree= false;
-    return false;
-  }
-    
 }

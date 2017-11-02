@@ -41,22 +41,17 @@ export class AllAnswersComponent implements OnInit {
         this._appService.getQuestionDetails(questionId)
                         .subscribe(resAppData => this.app = resAppData);
     }
-
+  
     agree(answerId) {
-        if(this.userAgree)
-          this.userAgree=false;
-        else
-          this.userAgree=true;
         this.util.agree(answerId); 
-      }
-    
-      disagree(answerId) {
-        if(this.userAgree)
-          this.userDisagree=false;
-        else
-          this.userDisagree=true;
-        this.util.disagree(answerId);
-      }
+        this.getAnswers();
+    }
+  
+    disagree(answerId) {
+        this.util.disagree(answerId); 
+        this.getAnswers();
+    }
+   
 
     onSelect(id) {
         this.router.navigate(['/answer', id]);

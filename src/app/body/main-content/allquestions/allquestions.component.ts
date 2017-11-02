@@ -11,11 +11,13 @@ import { Router } from '@angular/router';
 })
 export class AllquestionsComponent implements OnInit {
 
-  constructor( private _appService:AppService, private util:UtilComponent, private router:Router) { }
+  constructor( private _appService:AppService, 
+    private util:UtilComponent, private router:Router) { }
   
     questions=[];
     dataLoaded=false;
     pageNo:number
+
     ngOnInit() {
   
       this.pageNo=0;

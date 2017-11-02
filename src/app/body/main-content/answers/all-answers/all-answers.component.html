@@ -84,9 +84,16 @@
         {{answer.answer}}
             </p>
         </md-card-content>
+
         <md-card-actions align="center">
-            <button md-button color="primary" (click)=agree(answer.answerId) >{{answer.noOfAgree}} Agree</button>
-            <button md-button color="warn" (click)=disagree(answer.answerId)>{{answer.noOfDisagree}} Disagree</button>
+            <button md-button color="primary" 
+                (click)=agree(answer.answerId) >
+                {{answer.noOfAgree}} Agree
+            </button>
+            <button md-button color="warn" 
+                (click)=disagree(answer.answerId)>
+                {{answer.noOfDisagree}} Disagree
+            </button>
             <button md-button 
                 color="primary" 
                 (click)="onSelect(answer.answerId)">
