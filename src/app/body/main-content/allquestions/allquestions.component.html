@@ -18,8 +18,9 @@
         <div md-card-avatar>
             <md-icon>person</md-icon>
         </div>
-        <md-card-title (click)=onSelectUser(question.owner) style="cursor: pointer">{{question.ownerName}}</md-card-title>
-        <md-card-subtitle>{{question.creationDate | date}}</md-card-subtitle>
+        <md-card-title (click)=onSelectUser(question.owner) style="cursor: pointer">
+            {{question.ownerName}}</md-card-title>
+        <md-card-subtitle>Asked {{question.creationDate | date}}</md-card-subtitle>
             <md-chip-list>
                 <md-chip>Education</md-chip>
             </md-chip-list>

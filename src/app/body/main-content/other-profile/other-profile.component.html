@@ -17,20 +17,20 @@
   <md-tab label="Answers">
     <div *ngFor="let answer of otherUser">
       <md-card >
+          <h3 (click)=onSelect(answer.questionId) style="cursor: pointer">
+              {{answer.question}}
+            </h3>
         <md-card-header>
         <div md-card-avatar>
           <md-icon>person</md-icon>
         </div>
         <md-card-title>{{answer.answeredByName}}</md-card-title>
-        <md-card-subtitle>{{answer.date | date}}</md-card-subtitle>
+        <md-card-subtitle>Answered {{answer.date | date}}</md-card-subtitle>
           <md-chip-list>
             <md-chip>Education</md-chip>
           </md-chip-list>
         </md-card-header>
         <md-card-content>
-          <h3 (click)=onSelect(answer.questionId) style="cursor: pointer">
-            {{answer.question}}
-          </h3>
           <p style="white-space: pre-wrap;">
               {{answer.answer}}
           </p>
@@ -93,7 +93,7 @@
             <md-icon>person</md-icon>
           </div>
           <md-card-title >{{question.ownerName}}</md-card-title>
-          <md-card-subtitle>{{question.creationDate | date}}</md-card-subtitle>
+          <md-card-subtitle>Asked {{question.creationDate | date}}</md-card-subtitle>
             <md-chip-list>
               <md-chip>Education</md-chip>
             </md-chip-list>

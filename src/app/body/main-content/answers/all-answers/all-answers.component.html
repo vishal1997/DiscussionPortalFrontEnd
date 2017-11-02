@@ -6,7 +6,7 @@
                 <md-icon>person</md-icon>
             </div>
             <md-card-title>{{app.ownerName}}</md-card-title>
-            <md-card-subtitle>{{app.creationDate | date}}</md-card-subtitle>
+            <md-card-subtitle>Asked {{app.creationDate | date}}</md-card-subtitle>
             <md-chip-list>
                 <md-chip>Education</md-chip>
             </md-chip-list>
@@ -70,7 +70,7 @@
             <md-icon>person</md-icon>
         </div>
         <md-card-title (click)=onSelectUserId(answer.userId) style="cursor: pointer">{{answer.name}}</md-card-title>
-        <md-card-subtitle>{{answer.date | date}}</md-card-subtitle>
+        <md-card-subtitle>Answered {{answer.date | date}}</md-card-subtitle>
             <md-chip-list>
                 <md-chip>Education</md-chip>
             </md-chip-list>
