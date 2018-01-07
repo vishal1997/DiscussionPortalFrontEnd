@@ -31,6 +31,10 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl("/register");
   }
 
+  forgot() {
+    this.router.navigateByUrl("/reset");
+  }
+
   loginPage() {
     this.loading=true;
     this._appService.login(this.data).subscribe((res) => {

@@ -153,4 +153,14 @@ export class AppService {
         return this._http.get("/api/v1/search/"+ name)
         .map((response:Response) => response.json());
     }
+
+    forgotPassword(userId) {
+        return this._http.put("/api/v1/reset/", userId)
+        .map((response:Response) => response.json());
+    }
+
+    resetPassword(username, cpassword, otp) {
+        return this._http.put("/api/v1/reset/"+ username + "/" +otp, cpassword)
+        .map((response:Response) => response.json());
+    }
 }

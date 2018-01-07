@@ -16,6 +16,7 @@ import { SettingsComponent } from '../header/settings/settings.component';
 import { ContactComponent } from '../header/contact/contact.component';
 import { AllquestionsComponent } from '../body/main-content/allquestions/allquestions.component';
 import { SearchuserComponent } from '../body/main-content/searchuser/searchuser.component';
+import { ForgotPasswordComponent } from '../body/main-content/forgot-password/forgot-password.component';
 const routes:Routes = [
     {path:"question/:id", component: AllAnswersComponent, canActivate: [AuthGuard] },
     {path:"home", component: HomeComponent, canActivate: [AuthGuard] },
@@ -29,7 +30,8 @@ const routes:Routes = [
     {path:"", component: LoginComponent},
     {path:"contact", component: ContactComponent, canActivate:[AuthGuard]},
     {path:"allquestions", component: AllquestionsComponent, canActivate:[AuthGuard]},
-    {path:"search/:user", component: SearchuserComponent, canActivate:[AuthGuard]}
+    {path:"search/:user", component: SearchuserComponent, canActivate:[AuthGuard]},
+    {path:"reset", component: ForgotPasswordComponent}
 ]
 
 @NgModule({
